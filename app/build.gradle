@@ -35,6 +35,8 @@ android {
         jvmTarget = '17'
     }
     buildFeatures {
+        //noinspection DataBindingWithoutKapt
+        dataBinding true
         viewBinding true
     }
 }
@@ -90,7 +92,7 @@ dependencies {
 
     /****** ktor ******/
     implementation libs.ktor.client.android
-    
+
     /****** ActivityTestRule ******/
     androidTestImplementation(libs.androidx.test.rules)
     androidTestImplementation(libs.androidx.test.runner)
