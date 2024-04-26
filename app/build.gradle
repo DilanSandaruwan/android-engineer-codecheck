@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace 'jp.co.yumemi.android.code_check'
-    compileSdk 31
+    compileSdk 34
 
     defaultConfig {
         applicationId "jp.co.yumemi.android.codecheck"
         minSdk 23
-        targetSdk 31
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -27,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '17'
     }
     buildFeatures {
         viewBinding true
