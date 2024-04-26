@@ -10,12 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.FragmentHomeBinding
 import jp.co.yumemi.android.code_check.ui.adapter.GitHubRepoRecyclerViewAdapter
 import jp.co.yumemi.android.code_check.ui.viewmodel.home.HomeViewModel
 import jp.co.yumemi.android.code_check.ui.viewmodel.home.item
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
