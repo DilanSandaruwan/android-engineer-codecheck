@@ -23,7 +23,6 @@ import java.net.URL
  * @param context The application context for accessing system services.
  */
 class NetworkConnectivityInterceptor(private val context: Context) : Interceptor {
-
     /**
      * Intercepts the request chain and checks for network availability and internet reachability.
      *
@@ -87,5 +86,4 @@ class NetworkConnectivityInterceptor(private val context: Context) : Interceptor
             false
         }
     }
-
 }

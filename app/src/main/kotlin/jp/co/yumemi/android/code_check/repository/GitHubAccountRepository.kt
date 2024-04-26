@@ -54,7 +54,7 @@ class GitHubAccountRepository @Inject constructor(private val gitHubAccountApiSe
                     }
 
                     else -> {
-                        if (!response.raw().message.isNullOrEmpty()) {
+                        if (response.raw().message.isNotEmpty()) {
                             val errorMessage = response.raw().message
                             logError(errorMessage)
                             ApiResultState.Failed(R.string.something_wrong_with_code, errorMessage)

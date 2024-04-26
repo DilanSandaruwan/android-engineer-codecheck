@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Engineer CodeCheck</string>
+    <string name="app_name">~~ GitHub Repos ~~</string>
     <string name="searchInputText_hint">GitHub のリポジトリを検索できるよー</string>
     <string name="written_language">Written in %s</string>
 

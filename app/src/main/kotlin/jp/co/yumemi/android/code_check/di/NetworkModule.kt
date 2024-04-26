@@ -21,7 +21,11 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
     /**
-     * Provides the base URL for the API.
+     * Provides the base URL for the API as defined in the [ApiConfig] enum class.
+     *
+     * This value is used throughout the application to construct API request URLs.
+     *
+     * @return The base URL string.
      */
     @Singleton
     @Provides
@@ -30,7 +34,11 @@ object NetworkModule {
     }
 
     /**
-     * Provides the converter factory for JSON parsing.
+     * Provides a [GsonConverterFactory] for deserializing JSON responses from the API.
+     *
+     * Gson is a popular library for efficiently converting between JSON and Kotlin objects.
+     *
+     * @return A [Converter.Factory] instance for JSON parsing.
      */
     @Singleton
     @Provides
@@ -39,7 +47,15 @@ object NetworkModule {
     }
 
     /**
-     * Provides the HTTP client for making network requests.
+     * Provides a configured [OkHttpClient] instance for making network requests.
+     *
+     * This OkHttpClient is configured with a timeout and a [NetworkConnectivityInterceptor]
+     * to check for internet connectivity before making requests. Additional interceptors
+     * for authentication or logging can be added here if needed.
+     *
+     * @param context The application context required for the NetworkConnectivityInterceptor.
+     *
+     * @return A configured OkHttpClient instance.
      */
     @Singleton
     @Provides
@@ -52,11 +68,17 @@ object NetworkModule {
     }
 
     /**
-     * Provides the Retrofit instance for API communication.
+     * Provides a [Retrofit] instance configured for interacting with the API.
      *
-     * @param okHttpClient The OkHttpClient instance.
+     * This Retrofit instance is built using the provided baseUrl, converter factory,
+     * and OkHttpClient. It serves as the foundation for making network requests to
+     * the API endpoints.
+     *
+     * @param okHttpClient The configured OkHttpClient instance for making requests.
      * @param baseUrl The base URL for the API.
      * @param converterFactory The converter factory for JSON parsing.
+     *
+     * @return A configured Retrofit instance.
      */
     @Singleton
     @Provides
@@ -73,9 +95,15 @@ object NetworkModule {
     }
 
     /**
-     * Provides the GitHubAccountApiService instance for accessing GitHub API endpoints.
+     * Provides an instance of the [GitHubAccountApiService] interface for interacting
+     * with specific GitHub API endpoints.
      *
-     * @param retrofit The Retrofit instance.
+     * This method utilizes the provided Retrofit instance to create the ApiService instance
+     * through dynamic proxy generation.
+     *
+     * @param retrofit The configured Retrofit instance for making API requests.
+     *
+     * @return An instance of the GitHubAccountApiService interface.
      */
     @Singleton
     @Provides
@@ -84,9 +112,14 @@ object NetworkModule {
     }
 
     /**
-     * Provides the GitHubAccountRepository instance for managing GitHub account data.
+     * Provides an instance of the [GitHubAccountRepository] for managing GitHub account data.
      *
-     * @param githubAccountApiService The GitHubAccountApiService instance.
+     * This repository class encapsulates the logic for fetching and managing data related to
+     * GitHub accounts, utilizing the provided GitHubAccountApiService for network communication.
+     *
+     * @param githubAccountApiService The instance used for interacting with GitHub API endpoints.
+     *
+     * @return An instance of the GitHubAccountRepository class.
      */
     @Singleton
     @Provides

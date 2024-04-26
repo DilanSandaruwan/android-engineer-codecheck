@@ -1,5 +1,8 @@
 package jp.co.yumemi.android.code_check.constant
 
+/**
+ * Object containing constant strings used throughout the application.
+ */
 object StringConstant {
     /** Tag used for logging purposes within this codebase.  */
     const val TAG = "Code Test"

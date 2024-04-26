@@ -6,6 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
+/**
+ * Interface defining the contract for accessing GitHub repository data through an API service.
+ */
 interface GitHubAccountApiService {
     companion object {
         /**

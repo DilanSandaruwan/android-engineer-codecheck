@@ -3,8 +3,8 @@ package jp.co.yumemi.android.code_check.model
 /**
  * Data class representing the response from a GitHub search.
  *
- * @param totalCount The total count of search results.
- * @param incompleteResults Indicates if the results are incomplete or not.
+ * @param total_count The total count of search results.
+ * @param incomplete_results Indicates if the results are incomplete or not.
  * @param items The list of GitHub accounts matching the search criteria.
  */
 data class GitHubSearchResponse(

@@ -14,7 +14,6 @@ object CustomErrorMessage {
      * @param context The application context for accessing resources.
      * @return The formatted custom error message.
      */
-
     fun createMessage(customModel: CustomErrorModel, context: Context) : String{
         return if (customModel.message != null){
             if (customModel.majorErrorResId > 0){

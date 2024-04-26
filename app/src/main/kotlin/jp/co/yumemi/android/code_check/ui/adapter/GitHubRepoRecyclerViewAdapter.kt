@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.yumemi.android.code_check.R
+import jp.co.yumemi.android.code_check.constant.StringConstant
 import jp.co.yumemi.android.code_check.model.GitHubAccount
 
 class GitHubRepoRecyclerViewAdapter(
@@ -59,6 +60,12 @@ class GitHubRepoRecyclerViewAdapter(
         // Bind the data to the corresponding views in the ViewHolder
         (holder.itemView.findViewById<View>(R.id.repositoryNameView) as TextView).text =
             holderItem.fullName
+        (holder.itemView.findViewById<View>(R.id.repositoryDescriptionTextView) as TextView).text =
+            holderItem.description
+        (holder.itemView.findViewById<View>(R.id.repositoryLanguageTextView) as TextView).text =
+            holderItem.language ?: StringConstant.NO_LANGUAGE_FOUND
+        (holder.itemView.findViewById<View>(R.id.repositoryStargazersTextView) as TextView).text =
+            holderItem.stargazersCount.toString()
 
         // Set an onClickListener to handle item clicks and trigger an action
         holder.itemView.setOnClickListener {
