@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_repositoriesFragment_to_repositoryFragment"
+            android:id="@+id/action_homeFragment_to_repoDetailsFragment"
             app:destination="@id/repoDetailsFragment" />
     </fragment>
 
@@ -21,8 +21,8 @@
         android:label="@string/app_name"
         tools:layout="@layout/fragment_repo_details">
         <argument
-            android:name="item"
-            app:argType="jp.co.yumemi.android.code_check.ui.viewmodel.home.item" />
+            android:name="repository"
+            app:argType="jp.co.yumemi.android.code_check.model.GitHubAccount" />
     </fragment>
 
 </navigation>
