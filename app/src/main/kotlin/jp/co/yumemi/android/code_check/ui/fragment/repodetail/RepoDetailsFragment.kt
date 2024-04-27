@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.transform.CircleCropTransformation
@@ -73,7 +74,8 @@ class RepoDetailsFragment : Fragment() {
                 if (gitHubAccount.htmlUrl.isNullOrBlank()) {
                     showErrorDialog(getString(R.string.url_not_found))
                 } else {
-                    openUrlInBrowser(url!!)
+                    //openUrlInBrowser(url!!)
+                    navigateToProfileViewScreen(url!!)
                 }
             }
         }
@@ -91,6 +93,16 @@ class RepoDetailsFragment : Fragment() {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         val chooser = Intent.createChooser(intent, getString(R.string.select_a_browser))
         startActivity(chooser)
+    }
+
+    private fun navigateToProfileViewScreen(url: String) {
+        findNavController().navigate(
+            url.let {
+                RepoDetailsFragmentDirections.actionRepoDetailsFragmentToGithubProfileFragment(
+                    it
+                )
+            }
+        )
     }
 
     /**
