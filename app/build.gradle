@@ -21,6 +21,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
+
     buildTypes {
         release {
             minifyEnabled true
@@ -64,6 +68,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.annotation)
     implementation(libs.core.ktx)
+    implementation(libs.androidx.activity)
     ksp(libs.hilt.compiler)
 
     /****** AndroidX libraries ******/
@@ -107,6 +112,7 @@ dependencies {
     androidTestImplementation(libs.hamcrest)
     implementation(libs.androidx.core.testing)
     androidTestImplementation(libs.androidx.fragment.testing)
+    debugImplementation(libs.androidx.fragment.testing)
 
     /****** Mockito for Test ******/
     testImplementation(libs.mockito.core)

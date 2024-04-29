@@ -23,6 +23,18 @@
         <argument
             android:name="repository"
             app:argType="jp.co.yumemi.android.code_check.model.GitHubAccount" />
+        <action
+            android:id="@+id/action_repoDetailsFragment_to_githubProfileFragment"
+            app:destination="@id/githubProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/githubProfileFragment"
+        android:name="jp.co.yumemi.android.code_check.ui.fragment.profileview.GithubProfileFragment"
+        android:label="GithubProfileFragment" >
+        <argument
+            android:name="profileUrl"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 
 </navigation>

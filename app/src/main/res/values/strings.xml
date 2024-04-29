@@ -33,4 +33,6 @@
     <string name="placeholder_language" translatable="false">Java</string>
     <string name="placeholder_stargazors" translatable="false">10K</string>
     <string name="placeholder_repository_owner" translatable="false">Image of the profile owner</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
