@@ -18,7 +18,7 @@ class GithubProfileFragment : Fragment() {
     private val navArgs: GithubProfileFragmentArgs by navArgs()
 
     // URL of the GitHub user profile to be displayed
-    private var profileUrl: String? = null
+    var profileUrl: String? = null
 
     // View binding for the fragment layout
     private lateinit var binding: FragmentGithubProfileBinding
@@ -32,7 +32,6 @@ class GithubProfileFragment : Fragment() {
      *
      * @return The root view of the fragment.
      */
-    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,18 +43,31 @@ class GithubProfileFragment : Fragment() {
         FragmentGithubProfileBinding.inflate(inflater, container, false).apply {
             binding = this
             lifecycleOwner = this@GithubProfileFragment
-
-            // Configure the WebView settings
-            binding.webViewProfile.run {
-                settings.javaScriptEnabled = true
-                settings.loadWithOverviewMode = true
-                settings.useWideViewPort = true
-
-                // Load the profile URL in the WebView
-                profileUrl?.let { loadUrl(it) }
-            }
         }
         return binding.root
     }
 
+    /**
+     * Called immediately after [onCreateView] is called.
+     * Sets up the WebView to display the GitHub user profile.
+     */
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupWebView()
+    }
+
+    /**
+     * Configures the WebView settings and loads the profile URL.
+     */
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun setupWebView() {
+        binding.webViewProfile.run {
+            settings.javaScriptEnabled = true
+            settings.loadWithOverviewMode = true
+            settings.useWideViewPort = true
+
+            // Load the profile URL in the WebView
+            profileUrl?.let { loadUrl(it) }
+        }
+    }
 }
