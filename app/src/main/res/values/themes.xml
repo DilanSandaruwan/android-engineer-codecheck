@@ -39,4 +39,10 @@
         <item name="tint">@color/yellow_darker</item>
     </style>
 
+    <style name="Theme.AndroidEngineerCodeCheck.FabSpeedDial">
+        <item name="android:tint">@color/gray_fab</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="borderWidth">0dp</item>
+    </style>
+
 </resources>

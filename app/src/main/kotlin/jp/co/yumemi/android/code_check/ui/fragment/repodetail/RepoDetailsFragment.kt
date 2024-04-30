@@ -8,6 +8,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -26,6 +28,7 @@ import jp.co.yumemi.android.code_check.ui.viewmodel.repodetail.RepoDetailsViewMo
 class RepoDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentRepoDetailsBinding
+    private var isFabSheetOpen = false
 
     /**
      * Initializes the ViewModel and NavArgs.
@@ -70,6 +73,16 @@ class RepoDetailsFragment : Fragment() {
 
             // Add an OnClickListener to the floating action button
             binding.navFloatingActionButton.setOnClickListener {
+                if (isFabSheetOpen) {
+                    binding.sheetFabAll.visibility = INVISIBLE
+                    isFabSheetOpen = false
+                } else {
+                    binding.sheetFabAll.visibility = VISIBLE
+                    isFabSheetOpen = true
+                }
+            }
+
+            binding.fabOpenInBrowser.setOnClickListener {
                 val url = gitHubAccount.htmlUrl
                 if (gitHubAccount.htmlUrl.isNullOrBlank()) {
                     showErrorDialog(getString(R.string.url_not_found))
@@ -77,6 +90,12 @@ class RepoDetailsFragment : Fragment() {
                     //openUrlInBrowser(url!!)
                     navigateToProfileViewScreen(url!!)
                 }
+                isFabSheetOpen = false
+            }
+
+            binding.fabBookmark.setOnClickListener {
+                // TODO: Save in db as a bookmark
+                isFabSheetOpen = false
             }
         }
 
