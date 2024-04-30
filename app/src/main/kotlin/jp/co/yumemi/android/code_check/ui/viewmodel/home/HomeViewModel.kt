@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.yumemi.android.code_check.model.GitHubAccount
+import jp.co.yumemi.android.code_check.repository.BookmarkGitHubAccountRepository
 import jp.co.yumemi.android.code_check.repository.GitHubAccountRepository
 import jp.co.yumemi.android.code_check.util.exception.CustomErrorModel
 import jp.co.yumemi.android.code_check.util.network.ApiResultState

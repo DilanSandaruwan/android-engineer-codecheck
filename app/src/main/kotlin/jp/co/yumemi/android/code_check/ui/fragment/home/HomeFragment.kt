@@ -77,6 +77,10 @@ class HomeFragment : Fragment() {
                 return@setOnEditorActionListener false
             }
 
+        // Navigate to Bookmarks Screen
+        binding.fabToBookmarkScreen.setOnClickListener {
+            navigateToBookmarkScreen()
+        }
         // Observe changes in the ViewModel to update the UI based on LiveData events.
         observeViewModel()
     }
@@ -150,6 +154,12 @@ class HomeFragment : Fragment() {
         val repoSearchNavDirections =
             HomeFragmentDirections.actionHomeFragmentToRepoDetailsFragment(repository = item)
         findNavController().navigate(repoSearchNavDirections)
+    }
+
+    private fun navigateToBookmarkScreen() {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToBookmarkFragment()
+        )
     }
 
     /**

@@ -14,6 +14,7 @@
     <string name="title_no_term_search">Nothing to Search?</string>
     <string name="msg_no_term_search">Please enter something to search.</string>
     <string name="error_title">Error</string>
+    <string name="success_title">Success</string>
     <string name="response_ok" translatable="false">OK</string>
     <string name="select_a_browser">Select a browser</string>
     <string name="url_not_found">URL not found.</string>
@@ -37,4 +38,5 @@
     <!--  content description  -->
     <string name="open_in_browser">Open in browser</string>
     <string name="add_to_bookmarks">Add to bookmarks</string>
+    <string name="go_to_bookmarks">Go to bookmarks</string>
 </resources>

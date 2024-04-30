@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_repoDetailsFragment"
             app:destination="@id/repoDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookmarkFragment"
+            app:destination="@id/bookmarkFragment" />
     </fragment>
 
     <fragment
@@ -36,5 +39,9 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/bookmarkFragment"
+        android:name="jp.co.yumemi.android.code_check.ui.fragment.bookmark.BookmarkFragment"
+        android:label="BookmarkFragment" />
 
 </navigation>
