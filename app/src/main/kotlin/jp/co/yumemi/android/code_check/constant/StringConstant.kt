@@ -19,6 +19,9 @@ object StringConstant {
     /** Tag used for the generic error dialog fragment.  */
     const val ERROR_DIALOG_TAG = "custom_dialog_error"
 
+    /** Tag used for the generic success dialog fragment.  */
+    val SUCCESS_DIALOG_TAG = "custom_dialog_success"
+
     /****** Dialog Fragment Constants ******/
 
     /** Title text used in the common dialog fragment.  */

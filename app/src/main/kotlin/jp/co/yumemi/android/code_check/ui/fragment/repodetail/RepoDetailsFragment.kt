@@ -29,6 +29,7 @@ class RepoDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentRepoDetailsBinding
     private var isFabSheetOpen = false
+    private var isFavourite = false
 
     /**
      * Initializes the ViewModel and NavArgs.
@@ -94,8 +95,14 @@ class RepoDetailsFragment : Fragment() {
             }
 
             binding.fabBookmark.setOnClickListener {
-                // TODO: Save in db as a bookmark
+                viewModel.saveAsBookmark()
                 isFabSheetOpen = false
+            }
+        }
+
+        viewModel.localDbResponse.observe(viewLifecycleOwner) {
+            when {
+                it.isSuccess -> showSuccessDialog(it.message.toString())
             }
         }
 
@@ -142,6 +149,22 @@ class RepoDetailsFragment : Fragment() {
         )
         // Show the error dialog using the child fragment manager and a defined tag.
         dialog.show(childFragmentManager, StringConstant.ERROR_DIALOG_DETAILS_TAG)
+
+    }
+
+    private fun showSuccessDialog(successMsg: String) {
+        // Create a custom dialog fragment with the provided success details.
+        val dialog = CustomDialogFragment.newInstance(
+            title = getString(R.string.success_title),
+            message = successMsg,
+            positiveText = getString(R.string.response_ok),
+            negativeText = "",
+            positiveClickListener = { },
+            negativeClickListener = { },
+            iconResId = R.drawable.ic_dialog_success
+        )
+        // Show the error dialog using the child fragment manager and a defined tag.
+        dialog.show(childFragmentManager, StringConstant.SUCCESS_DIALOG_TAG)
 
     }
 
