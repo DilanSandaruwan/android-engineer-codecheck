@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/githubProfileFragment"
         android:name="jp.co.yumemi.android.code_check.ui.fragment.profileview.GithubProfileFragment"
-        android:label="GithubProfileFragment" >
+        android:label="GithubProfileFragment">
         <argument
             android:name="profileUrl"
             app:argType="string"
@@ -42,6 +42,10 @@
     <fragment
         android:id="@+id/bookmarkFragment"
         android:name="jp.co.yumemi.android.code_check.ui.fragment.bookmark.BookmarkFragment"
-        android:label="BookmarkFragment" />
+        android:label="BookmarkFragment">
+        <action
+            android:id="@+id/action_bookmarkFragment_to_githubProfileFragment"
+            app:destination="@id/githubProfileFragment" />
+    </fragment>
 
 </navigation>

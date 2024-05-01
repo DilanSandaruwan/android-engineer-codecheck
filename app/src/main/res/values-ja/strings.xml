@@ -11,6 +11,10 @@
     <string name="msg_no_term_search">検索する条件を入力してください。</string>
     <string name="error_title">エラー</string>
     <string name="success_title">成功</string>
+    <string name="confirmation_title">確認</string>
+    <string name="confirm_yes">はい</string>
+    <string name="confirm_no">いいえ</string>
+    <string name="response_cancel">キャンセル</string>
     <string name="select_a_browser">ブラウザを選択してください</string>
     <string name="url_not_found">URLが見つかりません.</string>
 
