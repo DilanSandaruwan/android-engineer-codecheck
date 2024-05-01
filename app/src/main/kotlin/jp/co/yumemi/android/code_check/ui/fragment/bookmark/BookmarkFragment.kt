@@ -16,8 +16,8 @@ import jp.co.yumemi.android.code_check.databinding.FragmentBookmarkBinding
 import jp.co.yumemi.android.code_check.model.AlertDialogResource
 import jp.co.yumemi.android.code_check.model.BookmarkGithubRepoItem
 import jp.co.yumemi.android.code_check.ui.adapter.BookmarkedGitHubRepoRecyclerViewAdapter
-import jp.co.yumemi.android.code_check.ui.component.dialog.CustomDialogFragment
 import jp.co.yumemi.android.code_check.ui.viewmodel.bookmark.BookmarkViewModel
+import jp.co.yumemi.android.code_check.util.component.DialogUtil.showAlertDialog
 
 /**
  * A simple [Fragment] subclass.
@@ -81,7 +81,7 @@ class BookmarkFragment : Fragment() {
                         negativeClickListener = { },
                         iconResId = R.drawable.ic_dialog_info,
                         StringConstant.CONFIRM_DELETE_BOOKMARK
-                    )
+                    ), childFragmentManager
                 )
             }
         })
@@ -119,7 +119,7 @@ class BookmarkFragment : Fragment() {
                                 negativeClickListener = { },
                                 iconResId = R.drawable.ic_dialog_success,
                                 tag = StringConstant.CONFIRM_DELETE_BOOKMARK_SUCCESS
-                            )
+                            ), childFragmentManager
                         )
                     }
 
@@ -133,27 +133,12 @@ class BookmarkFragment : Fragment() {
                                 negativeClickListener = { },
                                 iconResId = R.drawable.ic_dialog_error,
                                 tag = StringConstant.CONFIRM_DELETE_BOOKMARK_ERROR
-                            )
+                            ), childFragmentManager
                         )
                     }
                 }
             }
         }
-    }
-
-    private fun showAlertDialog(alertDialogResource: AlertDialogResource) {
-        // Create a custom dialog fragment with the provided success details.
-        val dialog = CustomDialogFragment.newInstance(
-            title = alertDialogResource.title,
-            message = alertDialogResource.message,
-            positiveText = alertDialogResource.positiveText,
-            negativeText = alertDialogResource.negativeText,
-            positiveClickListener = alertDialogResource.positiveClickListener,
-            negativeClickListener = alertDialogResource.negativeClickListener,
-            iconResId = alertDialogResource.iconResId
-        )
-        // Show the error dialog using the child fragment manager and a defined tag.
-        dialog.show(childFragmentManager, alertDialogResource.tag)
     }
 
     override fun onDestroyView() {
