@@ -20,11 +20,11 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/searchBar"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/default_zero"
                 android:layout_height="?attr/actionBarSize"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="8dp"
+                android:layout_margin="@dimen/margin_lyt_search_bar"
+                app:cardCornerRadius="@dimen/corner_radius_search_bar"
+                app:cardElevation="@dimen/card_elevation_search_Bar"
                 app:layout_constraintBottom_toTopOf="@id/recyclerView"
                 app:layout_constraintEnd_toStartOf="@id/fabToBookmarkScreen"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
                         android:hint="@string/searchInputText_hint"
                         android:imeOptions="actionSearch"
                         android:inputType="text"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/text_etv_search_input"
                         android:textStyle="bold" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -68,9 +68,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginTop="@dimen/margin_top_fab_to_bookmark"
+                android:layout_marginBottom="@dimen/margin_bottom_fab_to_bookmark"
+                android:layout_marginEnd="@dimen/margin_end_fab_to_bookmark"
                 app:fabSize="auto"
                 android:backgroundTint="@color/yellow_dark"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -82,10 +82,10 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/default_zero"
+                android:layout_height="@dimen/default_zero"
+                android:layout_marginStart="@dimen/margin_start_recycler_view"
+                android:layout_marginEnd="@dimen/margin_end_recycler_view"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -94,8 +94,8 @@
             <include
                 android:id="@+id/lytLoading"
                 layout="@layout/layout_loading_screen"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="@dimen/default_zero"
+                android:layout_height="@dimen/default_zero"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

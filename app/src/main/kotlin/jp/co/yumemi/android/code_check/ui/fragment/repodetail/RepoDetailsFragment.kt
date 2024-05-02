@@ -29,6 +29,9 @@ import jp.co.yumemi.android.code_check.ui.component.dialog.CustomDialogFragment
 import jp.co.yumemi.android.code_check.ui.viewmodel.repodetail.RepoDetailsViewModel
 import jp.co.yumemi.android.code_check.util.component.DialogUtil.showAlertDialog
 
+/**
+ * Fragment responsible for displaying details of a GitHub repository.
+ */
 @AndroidEntryPoint
 class RepoDetailsFragment : Fragment() {
 
@@ -72,128 +75,131 @@ class RepoDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Observe changes in the repository details and update the UI
-        viewModel.gitHubRepoDetails.observe(viewLifecycleOwner) { gitHubAccount ->
-            binding.ownerIconView.load(gitHubAccount.owner?.avatarUrl) {
-                crossfade(true)
-                placeholder(R.drawable.placeholder_repository)
-                transformations(CircleCropTransformation())
-                listener(onError = { _, _ ->
-                    placeholder(R.drawable.placeholder_repository)
-                })
-            }
-
-            // Add an OnClickListener to the floating action button
-            binding.navFloatingActionButton.setOnClickListener {
-                toggleActionButtonPanel()
-            }
-
-            binding.fabOpenInBrowser.setOnClickListener {
-                val url = gitHubAccount.htmlUrl
-                if (gitHubAccount.htmlUrl.isNullOrBlank()) {
-                    showErrorDialog(getString(R.string.url_not_found))
-                } else {
-                    //openUrlInBrowser(url!!)
-                    navigateToProfileViewScreen(url!!)
-                }
-                toggleActionButtonPanel()
-            }
-
-            binding.fabBookmark.setOnClickListener {
-
-                val confirmationMessage = viewModel.favouriteStatus.value?.let {
-                    if (it) {
-                        R.string.are_you_sure_you_want_to_delete_this_bookmark
-                    } else {
-                        R.string.are_you_sure_you_want_to_save_this_as_a_bookmark
+        viewModel.apply {
+            gitHubRepoDetails.observe(viewLifecycleOwner) { gitHubAccount ->
+                binding.apply {
+                    ownerIconView.load(gitHubAccount.owner?.avatarUrl) {
+                        crossfade(true)
+                        placeholder(R.drawable.placeholder_repository)
+                        transformations(CircleCropTransformation())
+                        listener(onError = { _, _ ->
+                            placeholder(R.drawable.placeholder_repository)
+                        })
                     }
-                } ?: R.string.are_you_sure_you_want_to_save_this_as_a_bookmark
 
-                val tagDialogFragment = viewModel.favouriteStatus.value?.let {
-                    if (it) {
-                        StringConstant.CONFIRM_DELETE_BOOKMARK
-                    } else {
-                        StringConstant.CONFIRM_ADD_BOOKMARK
+                    // Add an OnClickListener to the floating action button
+                    navFloatingActionButton.setOnClickListener {
+                        toggleActionButtonPanel()
                     }
-                } ?: StringConstant.CONFIRM_ADD_BOOKMARK
 
-                showAlertDialog(
-                    AlertDialogResource(
-                        title = getString(R.string.confirmation_title),
-                        message = getString(confirmationMessage),
-                        positiveText = getString(R.string.confirm_yes),
-                        negativeText = getString(R.string.confirm_no),
-                        positiveClickListener = {
-                            when (viewModel.favouriteStatus.value) {
-                                true -> viewModel.deleteFavourite(gitHubAccount.id)
-                                else -> viewModel.saveAsBookmark()
+                    fabOpenInBrowser.setOnClickListener {
+                        val url = gitHubAccount.htmlUrl
+                        if (gitHubAccount.htmlUrl.isNullOrBlank()) {
+                            showErrorDialog(getString(R.string.url_not_found))
+                        } else {
+                            navigateToProfileViewScreen(url!!)
+                        }
+                        toggleActionButtonPanel()
+                    }
+
+                    fabBookmark.setOnClickListener {
+
+                        val confirmationMessage = viewModel.favouriteStatus.value?.let {
+                            if (it) {
+                                R.string.are_you_sure_you_want_to_delete_this_bookmark
+                            } else {
+                                R.string.are_you_sure_you_want_to_save_this_as_a_bookmark
                             }
+                        } ?: R.string.are_you_sure_you_want_to_save_this_as_a_bookmark
 
-                            toggleActionButtonPanel()
-                        },
-                        negativeClickListener = { },
-                        iconResId = R.drawable.ic_dialog_info,
-                        tag = tagDialogFragment
-                    ), childFragmentManager
-                )
-            }
-        }
+                        val tagDialogFragment = viewModel.favouriteStatus.value?.let {
+                            if (it) {
+                                StringConstant.CONFIRM_DELETE_BOOKMARK
+                            } else {
+                                StringConstant.CONFIRM_ADD_BOOKMARK
+                            }
+                        } ?: StringConstant.CONFIRM_ADD_BOOKMARK
 
-        viewModel.favouriteStatus.observe(viewLifecycleOwner) {
-            if (it) {
-                binding.ivBookmarked.visibility = VISIBLE
-                binding.fabBookmark.setImageResource(R.drawable.ic_bookmark_remove_48dp)
-                binding.fabBookmark.imageTintList = ColorStateList.valueOf(
-                    resources.getColor(
-                        R.color.bookmarked_color,
-                        null
-                    )
-                ) // Apply bookmarked color
-
-            } else {
-                binding.ivBookmarked.visibility = GONE
-                binding.fabBookmark.setImageResource(R.drawable.ico_bookmark_add_24dp)
-                binding.fabBookmark.imageTintList = ColorStateList.valueOf(
-                    resources.getColor(
-                        R.color.default_bookmark_color,
-                        null
-                    )
-                ) // Apply default color
-            }
-        }
-
-        viewModel.localDbResponse.observe(viewLifecycleOwner) {
-            it?.let {
-                when (it.isSuccess) {
-                    true -> {
                         showAlertDialog(
                             AlertDialogResource(
-                                title = getString(R.string.success_title),
-                                message = it.message.toString(),
-                                positiveText = getString(R.string.response_ok),
-                                positiveClickListener = { viewModel.resetLocalDbResponse() },
-                                negativeClickListener = { },
-                                iconResId = R.drawable.ic_dialog_success,
-                                tag = StringConstant.CONFIRM_DELETE_BOOKMARK_SUCCESS
-                            ), childFragmentManager
-                        )
-                    }
+                                title = getString(R.string.confirmation_title),
+                                message = getString(confirmationMessage),
+                                positiveText = getString(R.string.confirm_yes),
+                                negativeText = getString(R.string.confirm_no),
+                                positiveClickListener = {
+                                    when (viewModel.favouriteStatus.value) {
+                                        true -> viewModel.deleteFavourite(gitHubAccount.id)
+                                        else -> viewModel.saveAsBookmark()
+                                    }
 
-                    false -> {
-                        showAlertDialog(
-                            AlertDialogResource(
-                                title = getString(R.string.error_title),
-                                message = it.message.toString(),
-                                positiveText = getString(R.string.response_cancel),
-                                positiveClickListener = { viewModel.resetLocalDbResponse() },
+                                    toggleActionButtonPanel()
+                                },
                                 negativeClickListener = { },
-                                iconResId = R.drawable.ic_dialog_error,
-                                tag = StringConstant.CONFIRM_DELETE_BOOKMARK_ERROR
+                                iconResId = R.drawable.ic_dialog_info,
+                                tag = tagDialogFragment
                             ), childFragmentManager
                         )
                     }
                 }
             }
 
+            favouriteStatus.observe(viewLifecycleOwner) {
+                if (it) {
+                    binding.ivBookmarked?.visibility = VISIBLE
+                    binding.fabBookmark.setImageResource(R.drawable.ic_bookmark_remove_48dp)
+                    binding.fabBookmark.imageTintList = ColorStateList.valueOf(
+                        resources.getColor(
+                            R.color.bookmarked_color,
+                            null
+                        )
+                    ) // Apply bookmarked color
+
+                } else {
+                    binding.ivBookmarked?.visibility = GONE
+                    binding.fabBookmark.setImageResource(R.drawable.ico_bookmark_add_24dp)
+                    binding.fabBookmark.imageTintList = ColorStateList.valueOf(
+                        resources.getColor(
+                            R.color.default_bookmark_color,
+                            null
+                        )
+                    ) // Apply default color
+                }
+            }
+
+            localDbResponse.observe(viewLifecycleOwner) {
+                it?.let {
+                    when (it.isSuccess) {
+                        true -> {
+                            showAlertDialog(
+                                AlertDialogResource(
+                                    title = getString(R.string.success_title),
+                                    message = it.message.toString(),
+                                    positiveText = getString(R.string.response_ok),
+                                    positiveClickListener = { viewModel.resetLocalDbResponse() },
+                                    negativeClickListener = { },
+                                    iconResId = R.drawable.ic_dialog_success,
+                                    tag = StringConstant.CONFIRM_DELETE_BOOKMARK_SUCCESS
+                                ), childFragmentManager
+                            )
+                        }
+
+                        false -> {
+                            showAlertDialog(
+                                AlertDialogResource(
+                                    title = getString(R.string.error_title),
+                                    message = it.message.toString(),
+                                    positiveText = getString(R.string.response_cancel),
+                                    positiveClickListener = { viewModel.resetLocalDbResponse() },
+                                    negativeClickListener = { },
+                                    iconResId = R.drawable.ic_dialog_error,
+                                    tag = StringConstant.CONFIRM_DELETE_BOOKMARK_ERROR
+                                ), childFragmentManager
+                            )
+                        }
+                    }
+                }
+
+            }
         }
 
         // Set the repository details in the ViewModel based on arguments passed to the fragment
@@ -205,6 +211,9 @@ class RepoDetailsFragment : Fragment() {
         viewModel.setFavouriteStatus(isBookmarked)
     }
 
+    /**
+     * Toggle FABs sheet
+     */
     private fun toggleActionButtonPanel() {
         if (isFabSheetOpen) {
             binding.sheetFabAll.visibility = INVISIBLE
@@ -225,6 +234,9 @@ class RepoDetailsFragment : Fragment() {
         startActivity(chooser)
     }
 
+    /**
+     * Navigate to view repository in a web view through app
+     */
     private fun navigateToProfileViewScreen(url: String) {
         findNavController().navigate(
             url.let {
@@ -253,22 +265,6 @@ class RepoDetailsFragment : Fragment() {
         )
         // Show the error dialog using the child fragment manager and a defined tag.
         dialog.show(childFragmentManager, StringConstant.ERROR_DIALOG_DETAILS_TAG)
-
-    }
-
-    private fun showSuccessDialog(successMsg: String) {
-        // Create a custom dialog fragment with the provided success details.
-        val dialog = CustomDialogFragment.newInstance(
-            title = getString(R.string.success_title),
-            message = successMsg,
-            positiveText = getString(R.string.response_ok),
-            negativeText = "",
-            positiveClickListener = { },
-            negativeClickListener = { },
-            iconResId = R.drawable.ic_dialog_success
-        )
-        // Show the error dialog using the child fragment manager and a defined tag.
-        dialog.show(childFragmentManager, StringConstant.SUCCESS_DIALOG_TAG)
 
     }
 

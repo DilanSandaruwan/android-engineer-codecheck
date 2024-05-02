@@ -10,8 +10,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="12dp"
+        android:layout_margin="@dimen/margin_lyt_bookmarked_item"
+        app:cardCornerRadius="@dimen/corner_radius_lyt_bookmarked_item"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true">
 
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/padding_lyt_bookmarked_item">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/lytRepoBasicData"
@@ -31,12 +31,12 @@
 
                 <ImageView
                     android:id="@+id/ownerIconView"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/width_owner_icon_view"
+                    android:layout_height="@dimen/height_owner_icon_view"
                     android:layout_gravity="center"
-                    android:layout_margin="0dp"
+                    android:layout_margin="@dimen/default_zero"
                     android:contentDescription="@string/placeholder_repository_owner"
-                    android:maxWidth="60dp"
+                    android:maxWidth="@dimen/max_width_owner_icon_view_bookmarked_item"
                     android:src="@drawable/jetbrains"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -45,14 +45,14 @@
                 <!-- Repository Name -->
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/repositoryNameView"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/default_zero"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="@dimen/margin_start_repository_name_view"
+                    android:layout_marginTop="@dimen/margin_top_repository_name_view"
+                    android:layout_marginEnd="@dimen/margin_end_repository_name_view"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_repository_name_view"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/vGuideBasicData"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -64,11 +64,10 @@
                     android:id="@+id/repositoryOwnerTypeLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="@dimen/margin_start_repository_owner_type_label"
+                    android:layout_marginTop="@dimen/margin_top_repository_owner_type_label"
                     android:textColor="#777766"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textSize="@dimen/text_repository_owner_type_label"
                     app:layout_constraintStart_toEndOf="@+id/ownerIconView"
                     app:layout_constraintTop_toBottomOf="@+id/repositoryNameView"
                     tool:text="@string/placeholder_repository_owner_type_label" />
@@ -77,19 +76,47 @@
                     android:id="@+id/repositoryOwnerTypeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="@dimen/margin_start_repository_owner_type_tv"
+                    android:layout_marginTop="@dimen/margin_top_repository_owner_type_tv"
                     android:textColor="#777766"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textSize="@dimen/text_repository_owner_type_tv"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/repositoryOwnerTypeLabel"
                     app:layout_constraintTop_toBottomOf="@+id/repositoryNameView"
                     tool:text="@string/placeholder_repository_owner_type" />
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/repositoryLanguageLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_start_repository_language_label"
+                    android:layout_marginTop="@dimen/margin_top_repository_language_label"
+                    android:textColor="#777766"
+                    android:textSize="@dimen/text_repository_language_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ownerIconView"
+                    app:layout_constraintTop_toBottomOf="@+id/repositoryOwnerTypeLabel"
+                    tool:text="@string/placeholder_repository_language_label" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/repositoryLanguageTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_start_repository_language_tv"
+                    android:layout_marginTop="@dimen/margin_top_repository_language_tv"
+                    android:textColor="#777766"
+                    android:textSize="@dimen/text_repository_language_tv"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/repositoryLanguageLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/repositoryOwnerTypeTextView"
+                    tool:text="@string/placeholder_repository_owner_type" />
+
                 <ImageView
                     android:id="@+id/ivNavigateToNext"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    style="@style/Theme.AndroidEngineerCodeCheck.ImageViewActionIcon"
+                    android:layout_width="@dimen/width_iv_navigate_to_next"
+                    android:layout_height="@dimen/height_iv_navigate_to_next"
                     android:contentDescription="@string/open_in_browser"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toTopOf="@id/hGuideBasicDataAction"
@@ -99,8 +126,9 @@
 
                 <ImageView
                     android:id="@+id/ivDeleteBookmark"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    style="@style/Theme.AndroidEngineerCodeCheck.ImageViewActionIcon"
+                    android:layout_width="@dimen/width_iv_delete_bookmark"
+                    android:layout_height="@dimen/height_iv_delete_bookmark"
                     android:contentDescription="@string/remove_from_bookmarks"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -126,42 +154,26 @@
             <View
                 android:id="@+id/viewHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="@dimen/height_view_horizontal"
+                android:layout_marginTop="@dimen/margin_top_view_horizontal"
                 android:background="@color/gray_fab"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lytRepoBasicData" />
+
             <!-- Repository Stars and Forks -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/margin_top_lyt_stars_forks_issues"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/viewHorizontal">
 
                 <!-- Stars Icon and Count -->
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:importantForAccessibility="no"
-                    android:src="@drawable/ic_language_48dp" />
-
-                <!-- Repository Language -->
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/repositoryLanguageTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:textSize="14sp"
-                    tool:text="@string/placeholder_language" />
-
-                <!-- Stars Icon and Count -->
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="25dp"
+                    android:layout_width="@dimen/width_stars_forks_issues"
+                    android:layout_height="@dimen/height_stars_forks_issues"
+                    android:layout_marginStart="@dimen/default_zero"
                     android:importantForAccessibility="no"
                     android:src="@drawable/ic_stargazor_48dp" />
 
@@ -170,15 +182,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:textSize="14sp"
+                    android:layout_marginStart="@dimen/margin_start_tv_stars_forks_issues"
+                    android:textSize="@dimen/text_tv_stars_forks_issues"
                     tool:text="@string/placeholder_stargazors" />
 
                 <!-- Stars Icon and Count -->
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="25dp"
+                    android:layout_width="@dimen/width_stars_forks_issues"
+                    android:layout_height="@dimen/height_stars_forks_issues"
+                    android:layout_marginStart="@dimen/margin_start_stars_forks_issues"
                     android:importantForAccessibility="no"
                     android:src="@drawable/ic_fork_right_48dp" />
 
@@ -187,15 +199,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:textSize="14sp"
+                    android:layout_marginStart="@dimen/margin_start_tv_stars_forks_issues"
+                    android:textSize="@dimen/text_tv_stars_forks_issues"
                     tool:text="@string/placeholder_stargazors" />
 
                 <!-- Stars Icon and Count -->
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="25dp"
+                    android:layout_width="@dimen/width_stars_forks_issues"
+                    android:layout_height="@dimen/height_stars_forks_issues"
+                    android:layout_marginStart="@dimen/margin_start_stars_forks_issues"
                     android:importantForAccessibility="no"
                     android:src="@drawable/ic_open_issues_48dp" />
 
@@ -204,8 +216,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:textSize="14sp"
+                    android:layout_marginStart="@dimen/margin_start_tv_stars_forks_issues"
+                    android:textSize="@dimen/text_tv_stars_forks_issues"
                     tool:text="@string/placeholder_stargazors" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

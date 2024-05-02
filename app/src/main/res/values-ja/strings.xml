@@ -26,8 +26,14 @@
     <string name="unauthorized_access">不正アクセス</string>
     <string name="something_wrong">何か問題が発生しました!</string>
     <string name="something_wrong_with_code">何か問題が発生しました! \\n- ステータス コード:</string>
+    <string name="are_you_sure_you_want_to_delete_this_bookmark">このブックマークを削除してもよろしいですか。</string>
+    <string name="are_you_sure_you_want_to_save_this_as_a_bookmark">これをブックマークとして保存してもよろしいですか。</string>
+    <string name="successfully_deleted">正常に削除されました。</string>
+    <string name="error_occurred_while_deleting">削除中にエラーが発生しました。</string>
 
     <!--  content description  -->
     <string name="repo_type">タイプ :</string>
+    <string name="language_label">言語 ：</string>
+    <string name="no_bookmarks_found">ブックマークが見つかりませんでした。</string>
 
 </resources>
