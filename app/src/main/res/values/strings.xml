@@ -51,5 +51,6 @@
     <string name="successfully_deleted">Successfully Deleted!</string>
     <string name="error_occurred_while_deleting">Error occurred while deleting</string>
     <string name="repo_type">Type :</string>
+    <string name="no_bookmarks_found">No bookmarks found</string>
 
 </resources>

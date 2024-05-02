@@ -29,5 +29,6 @@
 
     <!--  content description  -->
     <string name="repo_type">タイプ :</string>
+    <string name="no_bookmarks_found">No bookmarks found</string>
 
 </resources>
