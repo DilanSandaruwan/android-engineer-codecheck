@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  major  -->
+    <dimen name="default_zero">0dp</dimen>
+
+    <!--  activity_main  -->
+    <dimen name="margin_top_nav_host_fragment">5dp</dimen>
+    <dimen name="text_app_tool_bar_title">20sp</dimen>
+
+    <!--  fragment_bookmark  -->
+    <dimen name="drawable_padding_no_bookmark_tv">20dp</dimen>
+    <dimen name="text_no_bookmark_tv">18sp</dimen>
+
+    <!--  fragment_home  -->
+    <dimen name="margin_lyt_search_bar">12dp</dimen>
+    <dimen name="corner_radius_search_bar">12dp</dimen>
+    <dimen name="card_elevation_search_Bar">8dp</dimen>
+    <dimen name="text_etv_search_input">14sp</dimen>
+    <dimen name="margin_top_fab_to_bookmark">10dp</dimen>
+    <dimen name="margin_bottom_fab_to_bookmark">10dp</dimen>
+    <dimen name="margin_end_fab_to_bookmark">10dp</dimen>
+    <dimen name="margin_start_recycler_view">10dp</dimen>
+    <dimen name="margin_end_recycler_view">10dp</dimen>
+
+    <!--  fragment_repo_details  -->
+    <dimen name="margin_scroll_view">10dp</dimen>
+    <dimen name="width_iv_owner_icon_view">220dp</dimen>
+    <dimen name="height_iv_owner_icon_view">220dp</dimen>
+    <dimen name="margin_iv_owner_icon_view">16dp</dimen>
+    <dimen name="max_width_owner_icon_view">240dp</dimen>
+    <dimen name="width_iv_bookmarked">30dp</dimen>
+    <dimen name="height_iv_bookmarked">30dp</dimen>
+    <dimen name="margin_top_name_view">16dp</dimen>
+    <dimen name="text_name_view">20sp</dimen>
+    <dimen name="margin_horizontal_language_view">16dp</dimen>
+    <dimen name="margin_top_language_view">24dp</dimen>
+    <dimen name="text_language_view">14sp</dimen>
+    <dimen name="margin_top_tv_language">30dp</dimen>
+    <dimen name="text_tv_language">18sp</dimen>
+
+    <dimen name="height_lyt_stars">48dp</dimen>
+    <dimen name="margin_end_lyt_stars">10dp</dimen>
+    <dimen name="text_lyt_stars">18sp</dimen>
+    <dimen name="width_iv_lyt_stars">24dp</dimen>
+    <dimen name="height_iv_lyt_stars">24dp</dimen>
+    <dimen name="margin_start_stars_view">10dp</dimen>
+    <dimen name="text_stars_view">16sp</dimen>
+
+    <dimen name="height_lyt_watchers">48dp</dimen>
+    <dimen name="margin_end_lyt_watchers">10dp</dimen>
+    <dimen name="text_lyt_watchers">18sp</dimen>
+    <dimen name="width_iv_lyt_watchers">24dp</dimen>
+    <dimen name="height_iv_lyt_watchers">24dp</dimen>
+    <dimen name="margin_start_watchers_view">10dp</dimen>
+    <dimen name="text_watchers_view">16sp</dimen>
+
+    <dimen name="height_lyt_forks">48dp</dimen>
+    <dimen name="margin_end_lyt_forks">10dp</dimen>
+    <dimen name="text_lyt_forks">18sp</dimen>
+    <dimen name="width_iv_lyt_forks">24dp</dimen>
+    <dimen name="height_iv_lyt_forks">24dp</dimen>
+    <dimen name="margin_start_forks_view">10dp</dimen>
+    <dimen name="text_forks_view">16sp</dimen>
+
+    <dimen name="height_lyt_open_issues">48dp</dimen>
+    <dimen name="margin_end_lyt_open_issues">10dp</dimen>
+    <dimen name="text_lyt_open_issues">18sp</dimen>
+    <dimen name="width_iv_lyt_open_issues">24dp</dimen>
+    <dimen name="height_iv_lyt_open_issues">24dp</dimen>
+    <dimen name="margin_start_open_issues_view">10dp</dimen>
+    <dimen name="text_open_issues_view">16sp</dimen>
+
+    <dimen name="margin_bottom_sheet_fab_all">16dp</dimen>
+    <dimen name="margin_fab_bookmark">16dp</dimen>
+    <dimen name="margin_start_fab_open_in_browser">16dp</dimen>
+    <dimen name="margin_end_fab_open_in_browser">16dp</dimen>
+    <dimen name="margin_bottom_fab_open_in_browser">16dp</dimen>
+    <dimen name="margin_nav_floating_action_button">16dp</dimen>
+
+    <!--  layout_bookmarked_item  -->
+    <dimen name="margin_lyt_bookmarked_item">5dp</dimen>
+    <dimen name="corner_radius_lyt_bookmarked_item">12dp</dimen>
+    <dimen name="padding_lyt_bookmarked_item">16dp</dimen>
+    <dimen name="width_owner_icon_view">60dp</dimen>
+    <dimen name="height_owner_icon_view">60dp</dimen>
+    <dimen name="max_width_owner_icon_view_bookmarked_item">60dp</dimen>
+    <dimen name="margin_start_repository_name_view">10dp</dimen>
+    <dimen name="margin_top_repository_name_view">5dp</dimen>
+    <dimen name="margin_end_repository_name_view">10dp</dimen>
+    <dimen name="text_repository_name_view">18sp</dimen>
+
+    <dimen name="margin_start_repository_owner_type_label">10dp</dimen>
+    <dimen name="margin_top_repository_owner_type_label">5dp</dimen>
+    <dimen name="text_repository_owner_type_label">12sp</dimen>
+
+    <dimen name="margin_start_repository_owner_type_tv">10dp</dimen>
+    <dimen name="margin_top_repository_owner_type_tv">5dp</dimen>
+    <dimen name="text_repository_owner_type_tv">14sp</dimen>
+
+    <dimen name="margin_start_repository_language_label">10dp</dimen>
+    <dimen name="margin_top_repository_language_label">5dp</dimen>
+    <dimen name="text_repository_language_label">12sp</dimen>
+
+    <dimen name="margin_start_repository_language_tv">10dp</dimen>
+    <dimen name="margin_top_repository_language_tv">5dp</dimen>
+    <dimen name="text_repository_language_tv">14sp</dimen>
+
+    <dimen name="width_iv_navigate_to_next">30dp</dimen>
+    <dimen name="height_iv_navigate_to_next">30dp</dimen>
+
+    <dimen name="width_iv_delete_bookmark">30dp</dimen>
+    <dimen name="height_iv_delete_bookmark">30dp</dimen>
+    <dimen name="height_view_horizontal">2dp</dimen>
+    <dimen name="margin_top_view_horizontal">15dp</dimen>
+
+    <dimen name="margin_top_lyt_stars_forks_issues">5dp</dimen>
+    <dimen name="width_stars_forks_issues">24dp</dimen>
+    <dimen name="height_stars_forks_issues">24dp</dimen>
+    <dimen name="margin_start_stars_forks_issues">25dp</dimen>
+    <dimen name="margin_start_tv_stars_forks_issues">5dp</dimen>
+    <dimen name="text_tv_stars_forks_issues">14sp</dimen>
+    <dimen name="margin_layout_item">5dp</dimen>
+    <dimen name="corner_radius_layout_item">15dp</dimen>
+    <dimen name="padding_linear_lyt_layout_item">16dp</dimen>
+    <dimen name="width_owner_Icon_view_layout_item">48dp</dimen>
+    <dimen name="height_owner_Icon_view_layout_item">48dp</dimen>
+    <dimen name="max_width_iv_owner_Icon_view_layout_item">48dp</dimen>
+    <dimen name="margin_start_repo_name_view_layout_item">10dp</dimen>
+    <dimen name="text_repo_name_view_layout_item">18sp</dimen>
+    <dimen name="width_iv_bookmarked_layout_item">30dp</dimen>
+    <dimen name="height_iv_bookmarked_layout_item">30dp</dimen>
+    <dimen name="height_view_horizontal_layout_item">2dp</dimen>
+    <dimen name="margin_top_view_horizontal_layout_item">10dp</dimen>
+    <dimen name="margin_top_tv_repo_description_layout_item">5dp</dimen>
+    <dimen name="text_tv_repo_description_layout_item">14sp</dimen>
+    <dimen name="margin_top_lyt_lang_stars">8dp</dimen>
+    <dimen name="width_iv_lang_stars">24dp</dimen>
+    <dimen name="height_iv_lang_stars">24dp</dimen>
+    <dimen name="margin_start_tv_lang_layout_item">5dp</dimen>
+    <dimen name="text_tv_lang_layout_item">14sp</dimen>
+    <dimen name="margin_start_iv_lang_stars">25dp</dimen>
+    <dimen name="margin_start_tv_stars_layout_item">5dp</dimen>
+    <dimen name="text_tv_lang_stars">14sp</dimen>
+
+    <!--  layout_item  -->
+
+
+
+</resources>

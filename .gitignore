@@ -39,6 +39,7 @@ captures/
 
 # IntelliJ
 *.iml
+.idea/
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml
@@ -91,3 +92,7 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+
+# Keystore files
+*.jks
+*.keystore

@@ -1,5 +1,59 @@
 <resources>
-    <string name="app_name">Android Engineer CodeCheck</string>
+    <string name="app_name">~~ GitHub Repos ~~</string>
     <string name="searchInputText_hint">GitHub のリポジトリを検索できるよー</string>
-    <string name="written_language">Written in %s</string>
+
+    <!--  details screen  -->
+    <string name="label_stars" translatable="false">stars</string>
+    <string name="label_watchers" translatable="false">watchers</string>
+    <string name="label_forks" translatable="false">forks</string>
+    <string name="label_open_issues" translatable="false">open issues</string>
+    <string name="navigate_to_github">Go to GitHub</string>
+
+    <!--  dialogs  -->
+    <string name="title_no_term_search">Nothing to Search?</string>
+    <string name="msg_no_term_search">Please enter something to search.</string>
+    <string name="error_title">Error</string>
+    <string name="success_title">Success</string>
+    <string name="confirmation_title">Confirmation</string>
+    <string name="confirm_yes">Yes</string>
+    <string name="confirm_no">No</string>
+    <string name="response_ok" translatable="false">OK</string>
+    <string name="response_cancel">Cancel</string>
+    <string name="select_a_browser">Select a browser</string>
+    <string name="url_not_found">URL not found.</string>
+
+    <!--  errors and exceptions  -->
+    <string name="network_error">Network error: </string>
+    <string name="no_network_found">No internet connection found. Please check your internet connection.</string>
+    <string name="network_unreachable">Network unreachable. Please check your internet connection.</string>
+    <string name="resource_not_found">Resource not found.</string>
+    <string name="unauthorized_access">Unauthorized access</string>
+    <string name="something_wrong">Something went wrong!</string>
+    <string name="something_wrong_with_code">Something went wrong! \n- Status Code: </string>
+    <string name="are_you_sure_you_want_to_delete_this_bookmark">Are you sure you want to delete this bookmark?</string>
+    <string name="are_you_sure_you_want_to_save_this_as_a_bookmark">Are you sure you want to save this as a bookmark?</string>
+    <string name="successfully_deleted">Successfully Deleted!</string>
+    <string name="error_occurred_while_deleting">Error occurred while deleting</string>
+
+    <!--  placeholders  -->
+    <string name="placeholder_repository_name" translatable="false">Repository Name</string>
+    <string name="placeholder_repository_description" translatable="false">Repository Description</string>
+    <string name="placeholder_repository_owner_type" translatable="false">Repository Owner Type</string>
+    <string name="placeholder_repository_owner_type_label" translatable="false">Type :</string>
+    <string name="placeholder_repository_language_label" translatable="false">Language :</string>
+    <string name="placeholder_language" translatable="false">Java</string>
+    <string name="placeholder_stargazors" translatable="false">10K</string>
+    <string name="placeholder_repository_owner" translatable="false">Image of the profile owner</string>
+
+    <!--  content description  -->
+    <string name="open_in_browser">Open in browser</string>
+    <string name="add_to_bookmarks">Add to bookmarks</string>
+    <string name="go_to_bookmarks">Go to bookmarks</string>
+    <string name="remove_from_bookmarks">Remove from bookmarks</string>
+
+    <!--  bookmark screen  -->
+    <string name="repo_type">Type :</string>
+    <string name="language_label">Language :</string>
+    <string name="no_bookmarks_found">No bookmarks found</string>
+
 </resources>
