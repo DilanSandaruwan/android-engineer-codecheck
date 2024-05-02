@@ -67,6 +67,7 @@ class BookmarkedGitHubRepoRecyclerViewAdapter(
         holder.apply {
             binding.apply {
                 repositoryOwnerTypeLabel.text = resources.getString(R.string.repo_type)
+                repositoryLanguageLabel.text = resources.getString(R.string.language_label)
                 repositoryNameView.text = holderItem.name
                 repositoryOwnerTypeTextView.text = holderItem.ownerType
                 repositoryLanguageTextView.text =

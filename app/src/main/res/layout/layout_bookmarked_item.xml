@@ -68,7 +68,6 @@
                     android:layout_marginTop="5dp"
                     android:textColor="#777766"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ownerIconView"
                     app:layout_constraintTop_toBottomOf="@+id/repositoryNameView"
                     tool:text="@string/placeholder_repository_owner_type_label" />
@@ -81,13 +80,41 @@
                     android:layout_marginTop="5dp"
                     android:textColor="#777766"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/repositoryOwnerTypeLabel"
                     app:layout_constraintTop_toBottomOf="@+id/repositoryNameView"
                     tool:text="@string/placeholder_repository_owner_type" />
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/repositoryLanguageLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#777766"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ownerIconView"
+                    app:layout_constraintTop_toBottomOf="@+id/repositoryOwnerTypeLabel"
+                    tool:text="@string/placeholder_repository_language_label" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/repositoryLanguageTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#777766"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/repositoryLanguageLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/repositoryOwnerTypeTextView"
+                    tool:text="@string/placeholder_repository_owner_type" />
+
                 <ImageView
                     android:id="@+id/ivNavigateToNext"
+                    style="@style/Theme.AndroidEngineerCodeCheck.ImageViewActionIcon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:contentDescription="@string/open_in_browser"
@@ -99,6 +126,7 @@
 
                 <ImageView
                     android:id="@+id/ivDeleteBookmark"
+                    style="@style/Theme.AndroidEngineerCodeCheck.ImageViewActionIcon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:contentDescription="@string/remove_from_bookmarks"
@@ -131,6 +159,7 @@
                 android:background="@color/gray_fab"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lytRepoBasicData" />
+
             <!-- Repository Stars and Forks -->
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -144,24 +173,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:importantForAccessibility="no"
-                    android:src="@drawable/ic_language_48dp" />
-
-                <!-- Repository Language -->
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/repositoryLanguageTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:textSize="14sp"
-                    tool:text="@string/placeholder_language" />
-
-                <!-- Stars Icon and Count -->
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="0dp"
                     android:importantForAccessibility="no"
                     android:src="@drawable/ic_stargazor_48dp" />
 
