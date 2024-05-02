@@ -36,6 +36,16 @@
                     android:maxWidth="240dp"
                     android:src="@drawable/jetbrains" />
 
+                <ImageView
+                    android:id="@+id/ivBookmarked"
+                    style="@style/Theme.AndroidEngineerCodeCheck.ImageViewIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_bookmark_added_48dp"
+                    tools:ignore="ContentDescription" />
+
                 <TextView
                     android:id="@+id/nameView"
                     android:layout_width="match_parent"
@@ -132,7 +142,6 @@
                         android:textAlignment="viewEnd"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-
 
                     <ImageView
                         android:layout_width="24dp"

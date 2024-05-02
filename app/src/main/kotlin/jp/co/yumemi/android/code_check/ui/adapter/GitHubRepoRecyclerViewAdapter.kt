@@ -1,26 +1,32 @@
 package jp.co.yumemi.android.code_check.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.constant.StringConstant
+import jp.co.yumemi.android.code_check.databinding.LayoutItemBinding
+import jp.co.yumemi.android.code_check.model.BookmarkGithubRepoItem
 import jp.co.yumemi.android.code_check.model.GitHubAccount
 
 class GitHubRepoRecyclerViewAdapter(
     private val itemClickListener: OnItemClickListener,
 ) : ListAdapter<GitHubAccount, GitHubRepoRecyclerViewAdapter.ViewHolder>(diff_util) {
 
+    private var bookmarkedRepoItems: List<BookmarkGithubRepoItem>? = null
+
     /**
      * ViewHolder class for holding the views of each item in the RecyclerView.
      *
      * @param view The view representing an item.
      */
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    class ViewHolder(val binding: LayoutItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     /**
      * Interface for defining item click events.
@@ -31,7 +37,7 @@ class GitHubRepoRecyclerViewAdapter(
          *
          * @param item The clicked GitHubAccount item.
          */
-        fun itemClick(item: GitHubAccount)
+        fun itemClick(item: GitHubAccount, isBookmarked: Boolean)
     }
 
     /**
@@ -42,9 +48,9 @@ class GitHubRepoRecyclerViewAdapter(
      * @return The created ViewHolder.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val _view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_item, parent, false)
-        return ViewHolder(_view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = LayoutItemBinding.inflate(inflater, parent, false)
+        return ViewHolder(binding)
     }
 
     /**
@@ -57,20 +63,48 @@ class GitHubRepoRecyclerViewAdapter(
         // Get the data for the current item at the given position
         val holderItem = getItem(position)
 
-        // Bind the data to the corresponding views in the ViewHolder
-        (holder.itemView.findViewById<View>(R.id.repositoryNameView) as TextView).text =
-            holderItem.fullName
-        (holder.itemView.findViewById<View>(R.id.repositoryDescriptionTextView) as TextView).text =
-            holderItem.description
-        (holder.itemView.findViewById<View>(R.id.repositoryLanguageTextView) as TextView).text =
-            holderItem.language ?: StringConstant.NO_LANGUAGE_FOUND
-        (holder.itemView.findViewById<View>(R.id.repositoryStargazersTextView) as TextView).text =
-            holderItem.stargazersCount.toString()
+        //Check the item is available in saved github list
+        val isBookmarked: Boolean = bookmarkedRepoItems?.any { it.id == holderItem.id } == true
 
-        // Set an onClickListener to handle item clicks and trigger an action
-        holder.itemView.setOnClickListener {
-            itemClickListener.itemClick(holderItem)
+
+        holder.apply {
+            // Bind the data to the corresponding views in the ViewHolder
+            binding.apply {
+                repositoryNameView.text = holderItem.name
+                repositoryDescriptionTextView.text = holderItem.description
+                repositoryLanguageTextView.text =
+                    holderItem.language ?: StringConstant.NO_LANGUAGE_FOUND
+                repositoryStargazersTextView.text = holderItem.stargazersCount.toString()
+
+                holderItem.owner?.avatarUrl?.let {
+                    ownerIconView.load(it) {
+                        crossfade(true)
+                        placeholder(R.drawable.placeholder_repository)
+                        transformations(CircleCropTransformation())
+                        listener(onError = { _, _ ->
+                            placeholder(R.drawable.placeholder_repository)
+                        })
+                    }
+                }
+
+                ivBookmarked.visibility = if (isBookmarked) {
+                    VISIBLE
+                } else {
+                    INVISIBLE
+                }
+
+                // Set an onClickListener to handle item clicks and trigger an action
+                holder.itemView.setOnClickListener {
+                    itemClickListener.itemClick(holderItem, isBookmarked)
+                }
+            }
         }
+
+    }
+
+    fun mentionBookmarkedRepo(bookmarkedRepoList: List<BookmarkGithubRepoItem>) {
+        bookmarkedRepoItems = bookmarkedRepoList
+
     }
 
     companion object {

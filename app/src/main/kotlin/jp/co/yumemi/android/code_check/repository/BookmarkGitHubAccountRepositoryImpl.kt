@@ -44,7 +44,7 @@ class BookmarkGitHubAccountRepositoryImpl @Inject constructor(
             bookmarkDao.deleteBookmarkGithubRepoItem(id)
             LocalDBQueryResponse(
                 true,
-                "Deleted successfully"
+                "Successfully Deleted!"
             )
         } catch (e: SQLiteConstraintException) {
             // Handle other SQLiteConstraintExceptions

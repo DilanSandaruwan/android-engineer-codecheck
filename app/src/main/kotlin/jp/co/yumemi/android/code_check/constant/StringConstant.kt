@@ -5,6 +5,9 @@ package jp.co.yumemi.android.code_check.constant
  */
 object StringConstant {
 
+    /** Tag used for the add confirmation dialog fragment.  */
+    val CONFIRM_ADD_BOOKMARK = "custom_dialog_confirm_add_bookmark"
+
     /** Tag used for the delete confirmation dialog fragment.  */
     val CONFIRM_DELETE_BOOKMARK = "custom_dialog_confirm_delete_bookmark"
 

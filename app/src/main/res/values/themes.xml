@@ -45,4 +45,9 @@
         <item name="borderWidth">0dp</item>
     </style>
 
+    <style name="Theme.AndroidEngineerCodeCheck.ImageViewIcon">
+        <item name="android:tint">@color/black</item>
+        <item name="android:background">@color/yellow_dark</item>
+        <item name="borderWidth">0dp</item>
+    </style>
 </resources>

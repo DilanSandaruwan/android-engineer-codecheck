@@ -21,7 +21,8 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val gitHubAccountRepository: GitHubAccountRepository
+    private val gitHubAccountRepository: GitHubAccountRepository,
+    private val bookmarkGitHubAccountRepository: BookmarkGitHubAccountRepository
 ) : ViewModel() {
 
     private val _showLoader = MutableLiveData<Boolean>()
@@ -38,6 +39,8 @@ class HomeViewModel @Inject constructor(
     private val _gitHubRepoList = MutableLiveData<List<GitHubAccount>>()
     val gitHubRepoList: LiveData<List<GitHubAccount>>
         get() = _gitHubRepoList
+
+    val allBookmarks = bookmarkGitHubAccountRepository.getAllBookmarkGithubRepoItems()
 
     /**
      * Search for GitHub repositories based on the provided input text.

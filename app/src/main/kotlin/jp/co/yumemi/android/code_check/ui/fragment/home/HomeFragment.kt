@@ -109,6 +109,12 @@ class HomeFragment : Fragment() {
                 showErrorDialog(CustomErrorMessage.createMessage(it, requireContext()))
             }
         }
+
+        viewModel.allBookmarks?.observe(requireActivity()) {
+            it?.let {
+                adapter.mentionBookmarkedRepo(it)
+            }
+        }
     }
 
     /**
@@ -133,8 +139,8 @@ class HomeFragment : Fragment() {
              *
              * @param item The clicked GitHubAccount item.
              */
-            override fun itemClick(item: GitHubAccount) {
-                gotoRepositoryFragment(item)
+            override fun itemClick(item: GitHubAccount, isBookmarked: Boolean) {
+                gotoRepositoryFragment(item, isBookmarked)
             }
         })
 
@@ -150,9 +156,12 @@ class HomeFragment : Fragment() {
      *
      * @param item The selected GitHubAccount item.
      */
-    fun gotoRepositoryFragment(item: GitHubAccount) {
+    fun gotoRepositoryFragment(item: GitHubAccount, isBookmarked: Boolean) {
         val repoSearchNavDirections =
-            HomeFragmentDirections.actionHomeFragmentToRepoDetailsFragment(repository = item)
+            HomeFragmentDirections.actionHomeFragmentToRepoDetailsFragment(
+                repository = item,
+                isBookmarked = isBookmarked
+            )
         findNavController().navigate(repoSearchNavDirections)
     }
 

@@ -32,12 +32,12 @@ class RepoDetailsViewModel @Inject constructor(
      * A MutableLiveData instance holding the response of a local database query operation.
      * Exposes a LiveData object to observe changes in the local database query response.
      */
-    private val _localDbResponse = MutableLiveData<LocalDBQueryResponse>()
+    private val _localDbResponse = MutableLiveData<LocalDBQueryResponse?>()
 
     /**
      * Exposes a LiveData object to observe changes in the local database query response.
      */
-    val localDbResponse: LiveData<LocalDBQueryResponse>
+    val localDbResponse: LiveData<LocalDBQueryResponse?>
         get() = _localDbResponse
 
     private val _favouriteStatus = MutableLiveData(false)
@@ -52,6 +52,10 @@ class RepoDetailsViewModel @Inject constructor(
         _gitHubRepoDetails.value = gitHubAccount
     }
 
+    fun setFavouriteStatus(isFavourite: Boolean) {
+        _favouriteStatus.value = isFavourite
+    }
+
     fun saveAsBookmark() {
         val gitHubRepoItem = gitHubRepoDetails.value
 
@@ -63,9 +67,7 @@ class RepoDetailsViewModel @Inject constructor(
                 )
                 response.apply {
                     _localDbResponse.value = this
-                    when {
-                        isSuccess -> _favouriteStatus.value = true
-                    }
+                    _favouriteStatus.value = this.isSuccess
                 }
             }
         }
@@ -85,5 +87,9 @@ class RepoDetailsViewModel @Inject constructor(
 
     fun checkFavStatus(isFavourite: Boolean) {
         _favouriteStatus.value = isFavourite
+    }
+
+    fun resetLocalDbResponse() {
+        _localDbResponse.value = null
     }
 }

@@ -46,6 +46,7 @@
     <string name="go_to_bookmarks">Go to bookmarks</string>
     <string name="remove_from_bookmarks">Remove from bookmarks</string>
     <string name="are_you_sure_you_want_to_delete_this_bookmark">Are you sure you want to delete this bookmark?</string>
+    <string name="are_you_sure_you_want_to_save_this_as_a_bookmark">Are you sure you want to save this as a bookmark?</string>
     <string name="successfully_deleted">Successfully Deleted!</string>
     <string name="error_occurred_while_deleting">Error occurred while deleting</string>
 </resources>
