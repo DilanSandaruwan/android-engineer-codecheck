@@ -10,9 +10,11 @@ import kotlinx.parcelize.Parcelize
  *
  * @param avatarUrl The URL of the owner's avatar image.
  * @param login The login name of the owner.
+ * @param type The type of the owner. ex: Organization
  */
 @Parcelize
 data class Owner(
     @SerializedName("avatar_url") val avatarUrl: String?,
     @SerializedName("login") val login: String?,
+    @SerializedName("type") val type: String?,
 ) : Parcelable

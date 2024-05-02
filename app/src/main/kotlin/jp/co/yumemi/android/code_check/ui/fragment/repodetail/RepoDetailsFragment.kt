@@ -4,10 +4,14 @@
 package jp.co.yumemi.android.code_check.ui.fragment.repodetail
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,13 +23,19 @@ import dagger.hilt.android.AndroidEntryPoint
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.constant.StringConstant
 import jp.co.yumemi.android.code_check.databinding.FragmentRepoDetailsBinding
+import jp.co.yumemi.android.code_check.model.AlertDialogResource
+import jp.co.yumemi.android.code_check.model.GitHubAccount
 import jp.co.yumemi.android.code_check.ui.component.dialog.CustomDialogFragment
 import jp.co.yumemi.android.code_check.ui.viewmodel.repodetail.RepoDetailsViewModel
+import jp.co.yumemi.android.code_check.util.component.DialogUtil.showAlertDialog
 
 @AndroidEntryPoint
 class RepoDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentRepoDetailsBinding
+    private var isFabSheetOpen = false
+    private var isBookmarked = false
+    private lateinit var gitHubAccount: GitHubAccount
 
     /**
      * Initializes the ViewModel and NavArgs.
@@ -41,6 +51,10 @@ class RepoDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        gitHubAccount = args.repository
+        isBookmarked = args.isBookmarked
+
         binding = FragmentRepoDetailsBinding.inflate(layoutInflater, container, false).apply {
             detailsVM = viewModel
             lifecycleOwner = viewLifecycleOwner
@@ -70,6 +84,10 @@ class RepoDetailsFragment : Fragment() {
 
             // Add an OnClickListener to the floating action button
             binding.navFloatingActionButton.setOnClickListener {
+                toggleActionButtonPanel()
+            }
+
+            binding.fabOpenInBrowser.setOnClickListener {
                 val url = gitHubAccount.htmlUrl
                 if (gitHubAccount.htmlUrl.isNullOrBlank()) {
                     showErrorDialog(getString(R.string.url_not_found))
@@ -77,11 +95,123 @@ class RepoDetailsFragment : Fragment() {
                     //openUrlInBrowser(url!!)
                     navigateToProfileViewScreen(url!!)
                 }
+                toggleActionButtonPanel()
             }
+
+            binding.fabBookmark.setOnClickListener {
+
+                val confirmationMessage = viewModel.favouriteStatus.value?.let {
+                    if (it) {
+                        R.string.are_you_sure_you_want_to_delete_this_bookmark
+                    } else {
+                        R.string.are_you_sure_you_want_to_save_this_as_a_bookmark
+                    }
+                } ?: R.string.are_you_sure_you_want_to_save_this_as_a_bookmark
+
+                val tagDialogFragment = viewModel.favouriteStatus.value?.let {
+                    if (it) {
+                        StringConstant.CONFIRM_DELETE_BOOKMARK
+                    } else {
+                        StringConstant.CONFIRM_ADD_BOOKMARK
+                    }
+                } ?: StringConstant.CONFIRM_ADD_BOOKMARK
+
+                showAlertDialog(
+                    AlertDialogResource(
+                        title = getString(R.string.confirmation_title),
+                        message = getString(confirmationMessage),
+                        positiveText = getString(R.string.confirm_yes),
+                        negativeText = getString(R.string.confirm_no),
+                        positiveClickListener = {
+                            when (viewModel.favouriteStatus.value) {
+                                true -> viewModel.deleteFavourite(gitHubAccount.id)
+                                else -> viewModel.saveAsBookmark()
+                            }
+
+                            toggleActionButtonPanel()
+                        },
+                        negativeClickListener = { },
+                        iconResId = R.drawable.ic_dialog_info,
+                        tag = tagDialogFragment
+                    ), childFragmentManager
+                )
+            }
+        }
+
+        viewModel.favouriteStatus.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.ivBookmarked.visibility = VISIBLE
+                binding.fabBookmark.setImageResource(R.drawable.ic_bookmark_remove_48dp)
+                binding.fabBookmark.imageTintList = ColorStateList.valueOf(
+                    resources.getColor(
+                        R.color.bookmarked_color,
+                        null
+                    )
+                ) // Apply bookmarked color
+
+            } else {
+                binding.ivBookmarked.visibility = GONE
+                binding.fabBookmark.setImageResource(R.drawable.ico_bookmark_add_24dp)
+                binding.fabBookmark.imageTintList = ColorStateList.valueOf(
+                    resources.getColor(
+                        R.color.default_bookmark_color,
+                        null
+                    )
+                ) // Apply default color
+            }
+        }
+
+        viewModel.localDbResponse.observe(viewLifecycleOwner) {
+            it?.let {
+                when (it.isSuccess) {
+                    true -> {
+                        showAlertDialog(
+                            AlertDialogResource(
+                                title = getString(R.string.success_title),
+                                message = it.message.toString(),
+                                positiveText = getString(R.string.response_ok),
+                                positiveClickListener = { viewModel.resetLocalDbResponse() },
+                                negativeClickListener = { },
+                                iconResId = R.drawable.ic_dialog_success,
+                                tag = StringConstant.CONFIRM_DELETE_BOOKMARK_SUCCESS
+                            ), childFragmentManager
+                        )
+                    }
+
+                    false -> {
+                        showAlertDialog(
+                            AlertDialogResource(
+                                title = getString(R.string.error_title),
+                                message = it.message.toString(),
+                                positiveText = getString(R.string.response_cancel),
+                                positiveClickListener = { viewModel.resetLocalDbResponse() },
+                                negativeClickListener = { },
+                                iconResId = R.drawable.ic_dialog_error,
+                                tag = StringConstant.CONFIRM_DELETE_BOOKMARK_ERROR
+                            ), childFragmentManager
+                        )
+                    }
+                }
+            }
+
         }
 
         // Set the repository details in the ViewModel based on arguments passed to the fragment
         viewModel.setRepoDetails(args.repository)
+        isBookmarked = when (savedInstanceState) {
+            null -> args.isBookmarked
+            else -> viewModel.favouriteStatus.value ?: false
+        }
+        viewModel.setFavouriteStatus(isBookmarked)
+    }
+
+    private fun toggleActionButtonPanel() {
+        if (isFabSheetOpen) {
+            binding.sheetFabAll.visibility = INVISIBLE
+        } else {
+            binding.sheetFabAll.visibility = VISIBLE
+        }
+        isFabSheetOpen = !isFabSheetOpen
     }
 
     /**
@@ -123,6 +253,22 @@ class RepoDetailsFragment : Fragment() {
         )
         // Show the error dialog using the child fragment manager and a defined tag.
         dialog.show(childFragmentManager, StringConstant.ERROR_DIALOG_DETAILS_TAG)
+
+    }
+
+    private fun showSuccessDialog(successMsg: String) {
+        // Create a custom dialog fragment with the provided success details.
+        val dialog = CustomDialogFragment.newInstance(
+            title = getString(R.string.success_title),
+            message = successMsg,
+            positiveText = getString(R.string.response_ok),
+            negativeText = "",
+            positiveClickListener = { },
+            negativeClickListener = { },
+            iconResId = R.drawable.ic_dialog_success
+        )
+        // Show the error dialog using the child fragment manager and a defined tag.
+        dialog.show(childFragmentManager, StringConstant.SUCCESS_DIALOG_TAG)
 
     }
 

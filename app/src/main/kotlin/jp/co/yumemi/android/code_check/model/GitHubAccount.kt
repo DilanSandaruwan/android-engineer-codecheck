@@ -9,6 +9,7 @@ import kotlinx.parcelize.Parcelize
  * This class holds information about a GitHub repository, including its name, full name, owner details,
  * URL, description, programming language, star count, watchers count, fork count, and open issues count.
  *
+ * @param id The id of the GitHub repository.
  * @param name The name of the GitHub repository.
  * @param fullName The full name of the GitHub repository.
  * @param owner The owner details of the GitHub repository.
@@ -23,6 +24,7 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class GitHubAccount(
+    @SerializedName("id") val id:Long,
     @SerializedName("name") val name: String?,
     @SerializedName("full_name") val fullName: String?,
     @SerializedName("owner") val owner: Owner?,

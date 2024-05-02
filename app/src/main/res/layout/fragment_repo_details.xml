@@ -36,6 +36,16 @@
                     android:maxWidth="240dp"
                     android:src="@drawable/jetbrains" />
 
+                <ImageView
+                    android:id="@+id/ivBookmarked"
+                    style="@style/Theme.AndroidEngineerCodeCheck.ImageViewIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_bookmark_added_48dp"
+                    tools:ignore="ContentDescription" />
+
                 <TextView
                     android:id="@+id/nameView"
                     android:layout_width="match_parent"
@@ -132,7 +142,6 @@
                         android:textAlignment="viewEnd"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-
 
                     <ImageView
                         android:layout_width="24dp"
@@ -242,6 +251,41 @@
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/sheetFabAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_anchor="@id/navFloatingActionButton"
+            app:layout_anchorGravity="top|center_horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabBookmark"
+                style="@style/Theme.AndroidEngineerCodeCheck.FabSpeedDial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:contentDescription="@string/add_to_bookmarks"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ico_bookmark_add_24dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabOpenInBrowser"
+                style="@style/Theme.AndroidEngineerCodeCheck.FabSpeedDial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/open_in_browser"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ico_open_in_browser_24dp" />
+
+        </LinearLayout>
 
         <!-- Floating action button -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton

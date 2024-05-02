@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.co.yumemi.android.code_check.model.GitHubAccount
+import jp.co.yumemi.android.code_check.repository.BookmarkGitHubAccountRepository
 import jp.co.yumemi.android.code_check.repository.GitHubAccountRepository
 import jp.co.yumemi.android.code_check.util.exception.CustomErrorModel
 import jp.co.yumemi.android.code_check.util.network.ApiResultState
@@ -20,7 +21,8 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val gitHubAccountRepository: GitHubAccountRepository
+    private val gitHubAccountRepository: GitHubAccountRepository,
+    private val bookmarkGitHubAccountRepository: BookmarkGitHubAccountRepository
 ) : ViewModel() {
 
     private val _showLoader = MutableLiveData<Boolean>()
@@ -37,6 +39,8 @@ class HomeViewModel @Inject constructor(
     private val _gitHubRepoList = MutableLiveData<List<GitHubAccount>>()
     val gitHubRepoList: LiveData<List<GitHubAccount>>
         get() = _gitHubRepoList
+
+    val allBookmarks = bookmarkGitHubAccountRepository.getAllBookmarkGithubRepoItems()
 
     /**
      * Search for GitHub repositories based on the provided input text.
