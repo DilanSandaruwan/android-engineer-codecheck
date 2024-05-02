@@ -48,6 +48,7 @@
             <ImageView
                 android:id="@+id/ivBookmarked"
                 android:layout_width="30dp"
+                style="@style/Theme.AndroidEngineerCodeCheck.ImageViewIcon"
                 android:layout_height="30dp"
                 android:layout_gravity="end|center_vertical"
                 android:contentDescription="@string/open_in_browser"
@@ -56,6 +57,14 @@
                 app:srcCompat="@drawable/ic_bookmark_added_48dp" />
 
         </LinearLayout>
+
+        <View
+            android:id="@+id/viewHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_fab" />
+
         <!-- Repository Description -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/repositoryDescriptionTextView"
@@ -63,14 +72,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:ellipsize="end"
-            android:maxLines="3"
+            android:maxLines="2"
             android:textColor="#777766"
             android:textSize="14sp"
             tool:text="@string/placeholder_repository_description" />
 
         <!-- Repository Stars and Forks -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:orientation="horizontal">

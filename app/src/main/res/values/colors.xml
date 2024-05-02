@@ -20,6 +20,6 @@
     <color name="white_fab">#fafafa</color>
     <color name="gray_fab">#616161</color>
 
-    <color name="default_bookmark_color">#E6671B1B</color>
+    <color name="default_bookmark_color">#FF000000</color>
     <color name="bookmarked_color">#FAB005</color>
 </resources>

@@ -6,16 +6,16 @@ package jp.co.yumemi.android.code_check.constant
 object StringConstant {
 
     /** Tag used for the add confirmation dialog fragment.  */
-    val CONFIRM_ADD_BOOKMARK = "custom_dialog_confirm_add_bookmark"
+    const val CONFIRM_ADD_BOOKMARK = "custom_dialog_confirm_add_bookmark"
 
     /** Tag used for the delete confirmation dialog fragment.  */
-    val CONFIRM_DELETE_BOOKMARK = "custom_dialog_confirm_delete_bookmark"
+    const val CONFIRM_DELETE_BOOKMARK = "custom_dialog_confirm_delete_bookmark"
 
     /** Tag used for the delete confirmation dialog fragment when succeeded.  */
-    val CONFIRM_DELETE_BOOKMARK_SUCCESS = "custom_dialog_confirm_delete_bookmark_success"
+    const val CONFIRM_DELETE_BOOKMARK_SUCCESS = "custom_dialog_confirm_delete_bookmark_success"
 
     /** Tag used for the delete confirmation dialog fragment when an error occurred.  */
-    val CONFIRM_DELETE_BOOKMARK_ERROR = "custom_dialog_confirm_delete_bookmark_error"
+    const val CONFIRM_DELETE_BOOKMARK_ERROR = "custom_dialog_confirm_delete_bookmark_error"
 
     /** Tag used for logging purposes within this codebase.  */
     const val TAG = "Code Test"
@@ -33,7 +33,7 @@ object StringConstant {
     const val ERROR_DIALOG_TAG = "custom_dialog_error"
 
     /** Tag used for the generic success dialog fragment.  */
-    val SUCCESS_DIALOG_TAG = "custom_dialog_success"
+    const val SUCCESS_DIALOG_TAG = "custom_dialog_success"
 
     /****** Dialog Fragment Constants ******/
 

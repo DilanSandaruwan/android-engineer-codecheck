@@ -84,7 +84,7 @@ class BookmarkFragment : Fragment() {
                     ), childFragmentManager
                 )
             }
-        })
+        },resources)
 
         with(binding.recyclerView) {
             this.layoutManager = repoSearchLayoutManager

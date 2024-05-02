@@ -36,6 +36,7 @@
     <string name="placeholder_repository_name" translatable="false">Repository Name</string>
     <string name="placeholder_repository_description" translatable="false">Repository Description</string>
     <string name="placeholder_repository_owner_type" translatable="false">Repository Owner Type</string>
+    <string name="placeholder_repository_owner_type_label" translatable="false">Repo Type</string>
     <string name="placeholder_language" translatable="false">Java</string>
     <string name="placeholder_stargazors" translatable="false">10K</string>
     <string name="placeholder_repository_owner" translatable="false">Image of the profile owner</string>
@@ -49,4 +50,6 @@
     <string name="are_you_sure_you_want_to_save_this_as_a_bookmark">Are you sure you want to save this as a bookmark?</string>
     <string name="successfully_deleted">Successfully Deleted!</string>
     <string name="error_occurred_while_deleting">Error occurred while deleting</string>
+    <string name="repo_type">Type :</string>
+
 </resources>

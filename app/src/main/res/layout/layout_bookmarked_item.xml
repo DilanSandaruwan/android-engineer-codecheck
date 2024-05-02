@@ -61,6 +61,19 @@
                     tool:text="@string/placeholder_repository_name" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/repositoryOwnerTypeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#777766"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ownerIconView"
+                    app:layout_constraintTop_toBottomOf="@+id/repositoryNameView"
+                    tool:text="@string/placeholder_repository_owner_type_label" />
+
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/repositoryOwnerTypeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,7 +82,7 @@
                     android:textColor="#777766"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ownerIconView"
+                    app:layout_constraintStart_toEndOf="@+id/repositoryOwnerTypeLabel"
                     app:layout_constraintTop_toBottomOf="@+id/repositoryNameView"
                     tool:text="@string/placeholder_repository_owner_type" />
 

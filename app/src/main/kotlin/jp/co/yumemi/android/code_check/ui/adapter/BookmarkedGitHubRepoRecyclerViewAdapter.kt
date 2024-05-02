@@ -1,5 +1,6 @@
 package jp.co.yumemi.android.code_check.ui.adapter
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -14,6 +15,7 @@ import jp.co.yumemi.android.code_check.model.BookmarkGithubRepoItem
 
 class BookmarkedGitHubRepoRecyclerViewAdapter(
     private val itemClickListener: OnItemClickListener,
+    private val resources: Resources
 ) : ListAdapter<BookmarkGithubRepoItem, BookmarkedGitHubRepoRecyclerViewAdapter.ViewHolder>(
     diff_util
 ) {
@@ -64,6 +66,7 @@ class BookmarkedGitHubRepoRecyclerViewAdapter(
         // Bind the data to the corresponding views in the ViewHolder
         holder.apply {
             binding.apply {
+                repositoryOwnerTypeLabel.text = resources.getString(R.string.repo_type)
                 repositoryNameView.text = holderItem.name
                 repositoryOwnerTypeTextView.text = holderItem.ownerType
                 repositoryLanguageTextView.text =

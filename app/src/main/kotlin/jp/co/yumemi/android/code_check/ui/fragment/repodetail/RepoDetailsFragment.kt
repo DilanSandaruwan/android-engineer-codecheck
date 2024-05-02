@@ -142,27 +142,22 @@ class RepoDetailsFragment : Fragment() {
             if (it) {
                 binding.ivBookmarked.visibility = VISIBLE
                 binding.fabBookmark.setImageResource(R.drawable.ic_bookmark_remove_48dp)
-                binding.fabBookmark.supportBackgroundTintList = ColorStateList.valueOf(
+                binding.fabBookmark.imageTintList = ColorStateList.valueOf(
                     resources.getColor(
                         R.color.bookmarked_color,
                         null
                     )
                 ) // Apply bookmarked color
-//                binding.fabBookmark.backgroundTintList = ColorStateList.valueOf(
-//                    ContextCompat.getColor(
-//                        requireActivity() as MainActivity,
-//                        R.color.bookmarked_color
-//                    )
-//                ) // Apply bookmarked color
+
             } else {
                 binding.ivBookmarked.visibility = GONE
                 binding.fabBookmark.setImageResource(R.drawable.ico_bookmark_add_24dp)
-                binding.fabBookmark.supportBackgroundTintList = ColorStateList.valueOf(
+                binding.fabBookmark.imageTintList = ColorStateList.valueOf(
                     resources.getColor(
                         R.color.default_bookmark_color,
                         null
                     )
-                ) // Apply bookmarked color
+                ) // Apply default color
             }
         }
 
