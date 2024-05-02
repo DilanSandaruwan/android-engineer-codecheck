@@ -13,7 +13,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
- * ViewModel class for managing repository details.
+ * ViewModel class responsible for managing the repository details screen.
+ * This ViewModel interacts with the repository database and provides data to the associated fragment.
+ *
+ * @param bookmarkGitHubAccountRepository The repository for bookmarked GitHub accounts.
  */
 @HiltViewModel
 class RepoDetailsViewModel @Inject constructor(
@@ -52,10 +55,19 @@ class RepoDetailsViewModel @Inject constructor(
         _gitHubRepoDetails.value = gitHubAccount
     }
 
+    /**
+     * Sets the favourite status of the repository.
+     *
+     * @param isFavourite Boolean indicating whether the repository is bookmarked.
+     */
     fun setFavouriteStatus(isFavourite: Boolean) {
         _favouriteStatus.value = isFavourite
     }
 
+    /**
+     * Saves the current repository as a bookmark in the local database.
+     * If the repository is already bookmarked, updates its status accordingly.
+     */
     fun saveAsBookmark() {
         val gitHubRepoItem = gitHubRepoDetails.value
 
@@ -73,6 +85,11 @@ class RepoDetailsViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Deletes the bookmarked repository from the local database.
+     *
+     * @param id The ID of the repository to be deleted.
+     */
     fun deleteFavourite(id: Long) {
         viewModelScope.launch {
             val response = bookmarkGitHubAccountRepository.deleteBookmarkGithubRepoItem(id)
@@ -85,10 +102,9 @@ class RepoDetailsViewModel @Inject constructor(
         }
     }
 
-    fun checkFavStatus(isFavourite: Boolean) {
-        _favouriteStatus.value = isFavourite
-    }
-
+    /**
+     * Resets the local database query response.
+     */
     fun resetLocalDbResponse() {
         _localDbResponse.value = null
     }

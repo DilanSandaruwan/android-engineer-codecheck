@@ -15,16 +15,22 @@ import jp.co.yumemi.android.code_check.databinding.LayoutItemBinding
 import jp.co.yumemi.android.code_check.model.BookmarkGithubRepoItem
 import jp.co.yumemi.android.code_check.model.GitHubAccount
 
+/**
+ * RecyclerView adapter for displaying GitHub repository items.
+ *
+ * @param itemClickListener The listener for handling item click events.
+ */
 class GitHubRepoRecyclerViewAdapter(
     private val itemClickListener: OnItemClickListener,
 ) : ListAdapter<GitHubAccount, GitHubRepoRecyclerViewAdapter.ViewHolder>(diff_util) {
 
+    // List of bookmarked repository items
     private var bookmarkedRepoItems: List<BookmarkGithubRepoItem>? = null
 
     /**
      * ViewHolder class for holding the views of each item in the RecyclerView.
      *
-     * @param view The view representing an item.
+     * @param binding The ViewBinding instance for the item layout.
      */
     class ViewHolder(val binding: LayoutItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -36,6 +42,7 @@ class GitHubRepoRecyclerViewAdapter(
          * Called when an item is clicked.
          *
          * @param item The clicked GitHubAccount item.
+         * @param isBookmarked Boolean indicating whether the item is bookmarked.
          */
         fun itemClick(item: GitHubAccount, isBookmarked: Boolean)
     }
@@ -102,9 +109,13 @@ class GitHubRepoRecyclerViewAdapter(
 
     }
 
+    /**
+     * Updates the list of bookmarked repository items.
+     *
+     * @param bookmarkedRepoList The list of bookmarked repository items.
+     */
     fun mentionBookmarkedRepo(bookmarkedRepoList: List<BookmarkGithubRepoItem>) {
         bookmarkedRepoItems = bookmarkedRepoList
-
     }
 
     companion object {

@@ -165,6 +165,10 @@ class HomeFragment : Fragment() {
         findNavController().navigate(repoSearchNavDirections)
     }
 
+    /**
+     * Navigates to the bookmarked repositories screen.
+     * This function uses the NavController to navigate from the home fragment to the bookmark fragment.
+     */
     private fun navigateToBookmarkScreen() {
         findNavController().navigate(
             HomeFragmentDirections.actionHomeFragmentToBookmarkFragment()

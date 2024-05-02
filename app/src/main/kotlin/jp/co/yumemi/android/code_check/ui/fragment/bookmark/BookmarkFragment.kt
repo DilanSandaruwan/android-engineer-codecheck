@@ -22,9 +22,7 @@ import jp.co.yumemi.android.code_check.ui.viewmodel.bookmark.BookmarkViewModel
 import jp.co.yumemi.android.code_check.util.component.DialogUtil.showAlertDialog
 
 /**
- * A simple [Fragment] subclass.
- * Use the [BookmarkFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment responsible for displaying bookmarked GitHub repositories.
  */
 @AndroidEntryPoint
 class BookmarkFragment : Fragment() {
@@ -33,6 +31,14 @@ class BookmarkFragment : Fragment() {
     lateinit var viewModel: BookmarkViewModel
     private lateinit var adapter: BookmarkedGitHubRepoRecyclerViewAdapter
 
+    /**
+     * Initializes the fragment's view.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container The parent view that the fragment UI should be attached to.
+     * @param savedInstanceState The previously saved state, if any.
+     * @return The root view of the fragment.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,6 +56,12 @@ class BookmarkFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Called when the view hierarchy associated with the fragment is created.
+     *
+     * @param view The root view of the fragment.
+     * @param savedInstanceState The previously saved state, if any.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
@@ -57,6 +69,9 @@ class BookmarkFragment : Fragment() {
         setupRecyclerView()
     }
 
+    /**
+     * Sets up the RecyclerView for displaying bookmarked GitHub repositories.
+     */
     private fun setupRecyclerView() {
         // Create a LinearLayoutManager to manage the layout of items in the RecyclerView.
         val repoSearchLayoutManager = LinearLayoutManager(requireContext())
@@ -95,6 +110,11 @@ class BookmarkFragment : Fragment() {
         }
     }
 
+    /**
+     * Navigates to the GitHub profile fragment to display the details of a bookmarked repository.
+     *
+     * @param item The bookmarked GitHub repository item.
+     */
     fun navigateToRepositoryInWebView(item: BookmarkGithubRepoItem) {
         item.htmlUrl?.let {
             findNavController().navigate(
@@ -103,60 +123,70 @@ class BookmarkFragment : Fragment() {
         }
     }
 
+    /**
+     * Initializes observers for LiveData objects.
+     */
     private fun initObservers() {
-        viewModel.bookmarkedReposAll?.observe(viewLifecycleOwner) {
-            it?.let {
-                if (it.isNotEmpty()){
-                    binding.recyclerView.visibility = VISIBLE
-                    binding.lytNoBookmarksFound.visibility = GONE
+        viewModel.apply {
+            bookmarkedReposAll?.observe(viewLifecycleOwner) {
+                it?.let {
+                    if (it.isNotEmpty()){
+                        binding.recyclerView.visibility = VISIBLE
+                        binding.lytNoBookmarksFound.visibility = GONE
 
-                } else {
-                    binding.recyclerView.visibility = GONE
-                    binding.lytNoBookmarksFound.visibility = VISIBLE
-                }
-            }
-            adapter.submitList(it)
-        }
-
-        viewModel.localDbResponse.observe(viewLifecycleOwner) {
-            it?.let {
-                when (it.isSuccess) {
-                    true -> {
-                        showAlertDialog(
-                            AlertDialogResource(
-                                title = getString(R.string.success_title),
-                                message = getString(R.string.successfully_deleted),
-                                positiveText = getString(R.string.response_ok),
-                                positiveClickListener = { viewModel.resetLocalDbResponse() },
-                                negativeClickListener = { },
-                                iconResId = R.drawable.ic_dialog_success,
-                                tag = StringConstant.CONFIRM_DELETE_BOOKMARK_SUCCESS
-                            ), childFragmentManager
-                        )
+                    } else {
+                        binding.recyclerView.visibility = GONE
+                        binding.lytNoBookmarksFound.visibility = VISIBLE
                     }
+                }
+                adapter.submitList(it)
+            }
 
-                    false -> {
-                        showAlertDialog(
-                            AlertDialogResource(
-                                title = getString(R.string.error_title),
-                                message = getString(R.string.error_occurred_while_deleting),
-                                positiveText = getString(R.string.response_cancel),
-                                positiveClickListener = { viewModel.resetLocalDbResponse() },
-                                negativeClickListener = { },
-                                iconResId = R.drawable.ic_dialog_error,
-                                tag = StringConstant.CONFIRM_DELETE_BOOKMARK_ERROR
-                            ), childFragmentManager
-                        )
+            localDbResponse.observe(viewLifecycleOwner) {
+                it?.let {
+                    when (it.isSuccess) {
+                        true -> {
+                            showAlertDialog(
+                                AlertDialogResource(
+                                    title = getString(R.string.success_title),
+                                    message = getString(R.string.successfully_deleted),
+                                    positiveText = getString(R.string.response_ok),
+                                    positiveClickListener = { viewModel.resetLocalDbResponse() },
+                                    negativeClickListener = { },
+                                    iconResId = R.drawable.ic_dialog_success,
+                                    tag = StringConstant.CONFIRM_DELETE_BOOKMARK_SUCCESS
+                                ), childFragmentManager
+                            )
+                        }
+
+                        false -> {
+                            showAlertDialog(
+                                AlertDialogResource(
+                                    title = getString(R.string.error_title),
+                                    message = getString(R.string.error_occurred_while_deleting),
+                                    positiveText = getString(R.string.response_cancel),
+                                    positiveClickListener = { viewModel.resetLocalDbResponse() },
+                                    negativeClickListener = { },
+                                    iconResId = R.drawable.ic_dialog_error,
+                                    tag = StringConstant.CONFIRM_DELETE_BOOKMARK_ERROR
+                                ), childFragmentManager
+                            )
+                        }
                     }
                 }
             }
         }
     }
 
+    /**
+     * Called when the fragment's view is destroyed.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.localDbResponse.removeObservers(viewLifecycleOwner)
-        viewModel.bookmarkedReposAll?.removeObservers(viewLifecycleOwner)
+        viewModel.apply {
+            localDbResponse.removeObservers(viewLifecycleOwner)
+            bookmarkedReposAll?.removeObservers(viewLifecycleOwner)
+        }
     }
 
 }

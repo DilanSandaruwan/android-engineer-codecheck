@@ -9,6 +9,12 @@ import jp.co.yumemi.android.code_check.repository.BookmarkGitHubAccountRepositor
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel class responsible for managing the bookmarked repositories screen.
+ * This ViewModel interacts with the repository database to provide data to the associated fragment.
+ *
+ * @param bookmarkGitHubAccountRepository The repository for bookmarked GitHub accounts.
+ */
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
     private val bookmarkGitHubAccountRepository: BookmarkGitHubAccountRepository
@@ -27,6 +33,11 @@ class BookmarkViewModel @Inject constructor(
     val localDbResponse: MutableLiveData<LocalDBQueryResponse?>
         get() = _localDbResponse
 
+    /**
+     * Deletes a bookmarked repository from the local database.
+     *
+     * @param id The ID of the repository to be deleted.
+     */
     fun deleteFavourite(id: Long) {
         viewModelScope.launch {
             val response = bookmarkGitHubAccountRepository.deleteBookmarkGithubRepoItem(id)
@@ -36,6 +47,9 @@ class BookmarkViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Resets the local database query response.
+     */
     fun resetLocalDbResponse() {
         _localDbResponse.value = null
     }
