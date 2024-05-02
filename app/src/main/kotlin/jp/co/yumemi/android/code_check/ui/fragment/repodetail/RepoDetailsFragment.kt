@@ -140,7 +140,7 @@ class RepoDetailsFragment : Fragment() {
 
         viewModel.favouriteStatus.observe(viewLifecycleOwner) {
             if (it) {
-                binding.ivBookmarked.visibility = VISIBLE
+                binding.ivBookmarked?.visibility = VISIBLE
                 binding.fabBookmark.setImageResource(R.drawable.ic_bookmark_remove_48dp)
                 binding.fabBookmark.imageTintList = ColorStateList.valueOf(
                     resources.getColor(
@@ -150,7 +150,7 @@ class RepoDetailsFragment : Fragment() {
                 ) // Apply bookmarked color
 
             } else {
-                binding.ivBookmarked.visibility = GONE
+                binding.ivBookmarked?.visibility = GONE
                 binding.fabBookmark.setImageResource(R.drawable.ico_bookmark_add_24dp)
                 binding.fabBookmark.imageTintList = ColorStateList.valueOf(
                     resources.getColor(

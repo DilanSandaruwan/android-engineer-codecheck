@@ -14,71 +14,45 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:layout_gravity="center"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="visible">
+
 
             <LinearLayout
+                android:id="@+id/lytLeft"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="visible">
-
-                <ImageView
-                    android:id="@+id/ownerIconView"
-                    android:layout_width="220dp"
-                    android:layout_height="220dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="16dp"
-                    android:contentDescription="@string/placeholder_repository_owner"
-                    android:maxWidth="240dp"
-                    android:src="@drawable/jetbrains" />
+                android:layout_height="match_parent"
+                android:layout_gravity="end|center_vertical"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/ivBookmarked"
                     style="@style/Theme.AndroidEngineerCodeCheck.ImageViewIcon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_gravity="center"
                     android:scaleType="centerCrop"
                     android:visibility="gone"
                     app:srcCompat="@drawable/ic_bookmark_added_48dp"
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/nameView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:ellipsize="end"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:text="@{DetailsVM.gitHubRepoDetails.fullName}"
-                    android:textColor="?attr/colorSecondary"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="JetBrains/Kotlin" />
-
-                <TextView
-                    android:id="@+id/languageView"
-                    style="@style/ValueTextTheme"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="24dp"
-                    android:gravity="center"
-                    android:text="@{DetailsVM.gitHubRepoDetails.description}"
-                    android:textSize="14sp"
-                    tools:text="@string/placeholder_repository_description" />
-
-                <TextView
                     android:id="@+id/txtLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center"
                     android:text="@{DetailsVM.gitHubRepoDetails.language}"
                     android:textColor="?attr/colorSecondary"
@@ -88,7 +62,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -130,7 +105,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -144,6 +120,7 @@
                         android:textAlignment="viewEnd"
                         android:textSize="18sp"
                         android:textStyle="bold" />
+
 
                     <ImageView
                         android:layout_width="24dp"
@@ -161,7 +138,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:gravity="start|center_vertical"
-                        android:text="@{DetailsVM.gitHubRepoDetails.watchers.toString()}"
+                        android:text="@{DetailsVM.gitHubRepoDetails.watchersCount.toString()}"
                         android:textAlignment="viewStart"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -171,7 +148,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -213,7 +191,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -252,18 +231,95 @@
 
                 </LinearLayout>
             </LinearLayout>
-        </ScrollView>
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/lytRight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ownerIconView"
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="5dp"
+                            android:contentDescription="@string/placeholder_repository_owner"
+                            android:maxWidth="160dp"
+                            android:src="@drawable/jetbrains" />
+
+                        <TextView
+                            android:id="@+id/nameView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
+                            android:ellipsize="end"
+                            android:gravity="start"
+                            android:maxLines="2"
+                            android:text="@{DetailsVM.gitHubRepoDetails.fullName}"
+                            android:textAlignment="viewStart"
+                            android:textColor="?attr/colorSecondary"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            tools:text="JetBrains/Kotlin" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/languageView"
+                        style="@style/ValueTextTheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="24dp"
+                        android:gravity="start"
+                        android:text="@{DetailsVM.gitHubRepoDetails.description}"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"
+                        tools:text="@string/placeholder_repository_description" />
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/sheetFabAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
-            android:layout_marginBottom="16dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="16dp"
             android:orientation="vertical"
             android:visibility="invisible"
             app:layout_anchor="@id/navFloatingActionButton"
-            app:layout_anchorGravity="top|center_horizontal">
+            app:layout_anchorGravity="bottom|center_horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabOpenInBrowser"
+                style="@style/Theme.AndroidEngineerCodeCheck.FabSpeedDial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/open_in_browser"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ico_open_in_browser_24dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabBookmark"
@@ -275,18 +331,6 @@
                 app:fabSize="mini"
                 app:srcCompat="@drawable/ico_bookmark_add_24dp" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabOpenInBrowser"
-                style="@style/Theme.AndroidEngineerCodeCheck.FabSpeedDial"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:contentDescription="@string/open_in_browser"
-                app:fabSize="mini"
-                app:srcCompat="@drawable/ico_open_in_browser_24dp" />
-
         </LinearLayout>
 
         <!-- Floating action button -->
@@ -295,7 +339,7 @@
             style="@style/FloatingButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="top|end"
             android:layout_margin="16dp"
             android:contentDescription="@string/placeholder_repository_name"
             android:src="@drawable/ic_navigation_48dp" />
