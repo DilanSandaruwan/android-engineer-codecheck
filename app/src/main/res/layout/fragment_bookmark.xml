@@ -17,8 +17,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/default_zero"
+            android:layout_height="@dimen/default_zero"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,8 +27,8 @@
 
         <LinearLayout
             android:id="@+id/lytNoBookmarksFound"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/default_zero"
+            android:layout_height="@dimen/default_zero"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone"
@@ -42,10 +42,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:drawablePadding="20dp"
+                android:drawablePadding="@dimen/drawable_padding_no_bookmark_tv"
                 android:gravity="center"
                 android:text="@string/no_bookmarks_found"
-                android:textSize="18sp"
+                android:textSize="@dimen/text_no_bookmark_tv"
                 android:textStyle="bold"
                 app:drawableBottomCompat="@drawable/ico_nothing_found" />
 

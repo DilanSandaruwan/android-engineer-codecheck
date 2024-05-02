@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/header"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/default_zero"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/brownish_full"
         android:orientation="horizontal"
@@ -24,7 +24,7 @@
             android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/yellow_dark"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_app_tool_bar_title"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -32,9 +32,9 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="@dimen/default_zero"
+        android:layout_height="@dimen/default_zero"
+        android:layout_marginTop="@dimen/margin_top_nav_host_fragment"
         android:background="@drawable/bg_top_curved_transparent"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"

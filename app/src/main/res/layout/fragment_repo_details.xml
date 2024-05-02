@@ -17,7 +17,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:layout_margin="@dimen/margin_scroll_view">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,19 +28,19 @@
 
                 <ImageView
                     android:id="@+id/ownerIconView"
-                    android:layout_width="220dp"
-                    android:layout_height="220dp"
+                    android:layout_width="@dimen/width_iv_owner_icon_view"
+                    android:layout_height="@dimen/height_iv_owner_icon_view"
                     android:layout_gravity="center"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/margin_iv_owner_icon_view"
                     android:contentDescription="@string/placeholder_repository_owner"
-                    android:maxWidth="240dp"
+                    android:maxWidth="@dimen/max_width_owner_icon_view"
                     android:src="@drawable/jetbrains" />
 
                 <ImageView
                     android:id="@+id/ivBookmarked"
                     style="@style/Theme.AndroidEngineerCodeCheck.ImageViewIcon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/width_iv_bookmarked"
+                    android:layout_height="@dimen/height_iv_bookmarked"
                     android:scaleType="centerCrop"
                     android:visibility="gone"
                     app:srcCompat="@drawable/ic_bookmark_added_48dp"
@@ -51,13 +51,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/margin_top_name_view"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="2"
                     android:text="@{DetailsVM.gitHubRepoDetails.fullName}"
                     android:textColor="?attr/colorSecondary"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_name_view"
                     android:textStyle="bold"
                     tools:text="JetBrains/Kotlin" />
 
@@ -66,11 +66,11 @@
                     style="@style/ValueTextTheme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_language_view"
+                    android:layout_marginTop="@dimen/margin_top_language_view"
                     android:gravity="center"
                     android:text="@{DetailsVM.gitHubRepoDetails.description}"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/text_language_view"
                     tools:text="@string/placeholder_repository_description" />
 
                 <TextView
@@ -78,17 +78,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="@dimen/margin_top_tv_language"
                     android:gravity="center"
                     android:text="@{DetailsVM.gitHubRepoDetails.language}"
                     android:textColor="?attr/colorSecondary"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_tv_language"
                     android:textStyle="bold"
                     tools:text="@string/placeholder_language" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="@dimen/height_lyt_stars"
                     android:orientation="horizontal">
 
                     <TextView
@@ -96,17 +96,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="@dimen/margin_end_lyt_stars"
                         android:layout_weight="1"
                         android:gravity="end|center_vertical"
                         android:text="@string/label_stars"
                         android:textAlignment="viewEnd"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/text_lyt_stars"
                         android:textStyle="bold" />
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="@dimen/width_iv_lyt_stars"
+                        android:layout_height="@dimen/height_iv_lyt_stars"
                         android:layout_gravity="center"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_stargazor_48dp" />
@@ -117,12 +117,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/margin_start_stars_view"
                         android:layout_weight="1"
                         android:gravity="start|center_vertical"
                         android:text="@{DetailsVM.gitHubRepoDetails.stargazersCount.toString()}"
                         android:textAlignment="viewStart"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_stars_view"
                         android:textStyle="bold"
                         tools:text="38530 stars" />
 
@@ -130,24 +130,24 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="@dimen/height_lyt_watchers"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/lblWatchers"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="@dimen/margin_end_lyt_watchers"
                         android:layout_weight="1"
                         android:gravity="end|center_vertical"
                         android:text="@string/label_watchers"
                         android:textAlignment="viewEnd"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/text_lyt_watchers"
                         android:textStyle="bold" />
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="@dimen/width_iv_lyt_watchers"
+                        android:layout_height="@dimen/height_iv_lyt_watchers"
                         android:layout_gravity="center"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_watcher_48dp" />
@@ -158,12 +158,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/margin_start_watchers_view"
                         android:layout_weight="1"
                         android:gravity="start|center_vertical"
                         android:text="@{DetailsVM.gitHubRepoDetails.watchers.toString()}"
                         android:textAlignment="viewStart"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_watchers_view"
                         android:textStyle="bold"
                         tools:text="38530 watchers" />
 
@@ -171,7 +171,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="@dimen/height_lyt_forks"
                     android:orientation="horizontal">
 
                     <TextView
@@ -179,17 +179,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="@dimen/margin_end_lyt_forks"
                         android:layout_weight="1"
                         android:gravity="end|center_vertical"
                         android:text="@string/label_forks"
                         android:textAlignment="viewEnd"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/text_lyt_forks"
                         android:textStyle="bold" />
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="@dimen/width_iv_lyt_forks"
+                        android:layout_height="@dimen/height_iv_lyt_forks"
                         android:layout_gravity="center"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_fork_right_48dp" />
@@ -200,12 +200,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/margin_start_forks_view"
                         android:layout_weight="1"
                         android:gravity="start|center_vertical"
                         android:text="@{DetailsVM.gitHubRepoDetails.forksCount.toString()}"
                         android:textAlignment="viewStart"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_forks_view"
                         android:textStyle="bold"
                         tools:text="4675 forks" />
 
@@ -213,24 +213,24 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="@dimen/height_lyt_open_issues"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/lblOpenIssues"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="@dimen/margin_end_lyt_open_issues"
                         android:layout_weight="1"
                         android:gravity="end|center_vertical"
                         android:text="@string/label_open_issues"
                         android:textAlignment="viewEnd"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/text_lyt_open_issues"
                         android:textStyle="bold" />
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="@dimen/width_iv_lyt_open_issues"
+                        android:layout_height="@dimen/height_iv_lyt_open_issues"
                         android:layout_gravity="center"
                         android:importantForAccessibility="no"
                         android:src="@drawable/ic_open_issues_48dp" />
@@ -241,12 +241,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="@dimen/margin_start_open_issues_view"
                         android:layout_weight="1"
                         android:gravity="start|center_vertical"
                         android:text="@{DetailsVM.gitHubRepoDetails.openIssuesCount.toString()}"
                         android:textAlignment="viewStart"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_open_issues_view"
                         android:textStyle="bold"
                         tools:text="131 open issues" />
 
@@ -259,7 +259,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/margin_bottom_sheet_fab_all"
             android:orientation="vertical"
             android:visibility="invisible"
             app:layout_anchor="@id/navFloatingActionButton"
@@ -270,7 +270,7 @@
                 style="@style/Theme.AndroidEngineerCodeCheck.FabSpeedDial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/margin_fab_bookmark"
                 android:contentDescription="@string/add_to_bookmarks"
                 app:fabSize="mini"
                 app:srcCompat="@drawable/ico_bookmark_add_24dp" />
@@ -280,9 +280,9 @@
                 style="@style/Theme.AndroidEngineerCodeCheck.FabSpeedDial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginStart="@dimen/margin_start_fab_open_in_browser"
+                android:layout_marginEnd="@dimen/margin_end_fab_open_in_browser"
+                android:layout_marginBottom="@dimen/margin_bottom_fab_open_in_browser"
                 android:contentDescription="@string/open_in_browser"
                 app:fabSize="mini"
                 app:srcCompat="@drawable/ico_open_in_browser_24dp" />
@@ -296,7 +296,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/margin_nav_floating_action_button"
             android:contentDescription="@string/placeholder_repository_name"
             android:src="@drawable/ic_navigation_48dp" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

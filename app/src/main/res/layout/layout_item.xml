@@ -4,8 +4,8 @@
     xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    app:cardCornerRadius="15dp"
+    android:layout_margin="@dimen/margin_layout_item"
+    app:cardCornerRadius="@dimen/corner_radius_layout_item"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/padding_linear_lyt_layout_item">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,12 +23,12 @@
 
             <ImageView
                 android:id="@+id/ownerIconView"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/width_owner_Icon_view_layout_item"
+                android:layout_height="@dimen/height_owner_Icon_view_layout_item"
                 android:layout_gravity="center"
-                android:layout_margin="0dp"
+                android:layout_margin="@dimen/default_zero"
                 android:contentDescription="@string/placeholder_repository_owner"
-                android:maxWidth="48dp"
+                android:maxWidth="@dimen/max_width_iv_owner_Icon_view_layout_item"
                 android:src="@drawable/jetbrains" />
 
             <!-- Repository Name -->
@@ -37,19 +37,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/margin_start_repo_name_view_layout_item"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:textSize="18sp"
+                android:textSize="@dimen/text_repo_name_view_layout_item"
                 android:textStyle="bold"
                 tool:text="@string/placeholder_repository_name" />
 
             <ImageView
                 android:id="@+id/ivBookmarked"
-                android:layout_width="30dp"
+                android:layout_width="@dimen/width_iv_bookmarked_layout_item"
                 style="@style/Theme.AndroidEngineerCodeCheck.ImageViewIcon"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/height_iv_bookmarked_layout_item"
                 android:layout_gravity="end|center_vertical"
                 android:contentDescription="@string/open_in_browser"
                 android:scaleType="centerCrop"
@@ -61,8 +61,8 @@
         <View
             android:id="@+id/viewHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="@dimen/height_view_horizontal_layout_item"
+            android:layout_marginTop="@dimen/margin_top_view_horizontal_layout_item"
             android:background="@color/gray_fab" />
 
         <!-- Repository Description -->
@@ -70,24 +70,24 @@
             android:id="@+id/repositoryDescriptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/margin_top_tv_repo_description_layout_item"
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="#777766"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_tv_repo_description_layout_item"
             tool:text="@string/placeholder_repository_description" />
 
         <!-- Repository Stars and Forks -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/margin_top_lyt_lang_stars"
             android:orientation="horizontal">
 
             <!-- Stars Icon and Count -->
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/width_iv_lang_stars"
+                android:layout_height="@dimen/height_iv_lang_stars"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_language_48dp" />
 
@@ -97,15 +97,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:textSize="14sp"
+                android:layout_marginStart="@dimen/margin_start_tv_lang_layout_item"
+                android:textSize="@dimen/text_tv_lang_layout_item"
                 tool:text="@string/placeholder_language" />
 
             <!-- Stars Icon and Count -->
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="25dp"
+                android:layout_width="@dimen/width_iv_lang_stars"
+                android:layout_height="@dimen/height_iv_lang_stars"
+                android:layout_marginStart="@dimen/margin_start_iv_lang_stars"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_stargazor_48dp" />
 
@@ -114,8 +114,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:textSize="14sp"
+                android:layout_marginStart="@dimen/margin_start_tv_stars_layout_item"
+                android:textSize="@dimen/text_tv_lang_stars"
                 tool:text="@string/placeholder_stargazors" />
 
         </LinearLayout>
